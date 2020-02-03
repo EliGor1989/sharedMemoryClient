@@ -1,0 +1,9 @@
+C:\Users\Eros\gitProjects\sharedmemory\Help & Examples\C#\smExample\bin\x86\Debug\smExample.exe
+C:\Users\Eros\gitProjects\sharedmemory\Help & Examples\C#\smExample\bin\x86\Debug\smExample.pdb
+C:\Users\Eros\gitProjects\sharedmemory\Help & Examples\C#\smExample\obj\x86\Debug\smExample.Form1.resources
+C:\Users\Eros\gitProjects\sharedmemory\Help & Examples\C#\smExample\obj\x86\Debug\smExample.Properties.Resources.resources
+C:\Users\Eros\gitProjects\sharedmemory\Help & Examples\C#\smExample\obj\x86\Debug\smExample.csproj.GenerateResource.Cache
+C:\Users\Eros\gitProjects\sharedmemory\Help & Examples\C#\smExample\obj\x86\Debug\smExample.exe
+C:\Users\Eros\gitProjects\sharedmemory\Help & Examples\C#\smExample\obj\x86\Debug\smExample.pdb
+C:\Users\Eros\gitProjects\sharedmemory\Help & Examples\C#\smExample\obj\x86\Debug\smExample.csproj.CoreCompileInputs.cache
+C:\Users\Eros\gitProjects\sharedmemory\Help & Examples\C#\smExample\obj\x86\Debug\smExample.csprojAssemblyReference.cache

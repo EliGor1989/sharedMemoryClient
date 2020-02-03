@@ -1,0 +1,9 @@
+C:\Users\Eros\gitProjects\sharedmemory\Help & Examples\C#\smExample\bin\x86\Release\smExample.exe
+C:\Users\Eros\gitProjects\sharedmemory\Help & Examples\C#\smExample\bin\x86\Release\smExample.pdb
+C:\Users\Eros\gitProjects\sharedmemory\Help & Examples\C#\smExample\obj\x86\Release\smExample.csprojAssemblyReference.cache
+C:\Users\Eros\gitProjects\sharedmemory\Help & Examples\C#\smExample\obj\x86\Release\smExample.Form1.resources
+C:\Users\Eros\gitProjects\sharedmemory\Help & Examples\C#\smExample\obj\x86\Release\smExample.Properties.Resources.resources
+C:\Users\Eros\gitProjects\sharedmemory\Help & Examples\C#\smExample\obj\x86\Release\smExample.csproj.GenerateResource.cache
+C:\Users\Eros\gitProjects\sharedmemory\Help & Examples\C#\smExample\obj\x86\Release\smExample.csproj.CoreCompileInputs.cache
+C:\Users\Eros\gitProjects\sharedmemory\Help & Examples\C#\smExample\obj\x86\Release\smExample.exe
+C:\Users\Eros\gitProjects\sharedmemory\Help & Examples\C#\smExample\obj\x86\Release\smExample.pdb

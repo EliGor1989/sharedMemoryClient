@@ -1,0 +1,17 @@
+c:\users\eros\documents\visual studio 2015\Projects\smExample\smExample\bin\Debug\smExample.exe
+c:\users\eros\documents\visual studio 2015\Projects\smExample\smExample\bin\Debug\smExample.pdb
+c:\users\eros\documents\visual studio 2015\Projects\smExample\smExample\obj\Debug\smExample.csprojResolveAssemblyReference.cache
+c:\users\eros\documents\visual studio 2015\Projects\smExample\smExample\obj\Debug\smExample.Form1.resources
+c:\users\eros\documents\visual studio 2015\Projects\smExample\smExample\obj\Debug\smExample.Properties.Resources.resources
+c:\users\eros\documents\visual studio 2015\Projects\smExample\smExample\obj\Debug\smExample.csproj.GenerateResource.Cache
+c:\users\eros\documents\visual studio 2015\Projects\smExample\smExample\obj\Debug\smExample.exe
+c:\users\eros\documents\visual studio 2015\Projects\smExample\smExample\obj\Debug\smExample.pdb
+C:\Users\Eros\gitProjects\sharedmemory\Help & Examples\C#\smExample\obj\Debug\smExample.exe
+C:\Users\Eros\gitProjects\sharedmemory\Help & Examples\C#\smExample\obj\Debug\smExample.pdb
+C:\Users\Eros\gitProjects\sharedmemory\Help & Examples\C#\smExample\bin\Debug\smExample.exe
+C:\Users\Eros\gitProjects\sharedmemory\Help & Examples\C#\smExample\bin\Debug\smExample.pdb
+C:\Users\Eros\gitProjects\sharedmemory\Help & Examples\C#\smExample\obj\Debug\smExample.Form1.resources
+C:\Users\Eros\gitProjects\sharedmemory\Help & Examples\C#\smExample\obj\Debug\smExample.Properties.Resources.resources
+C:\Users\Eros\gitProjects\sharedmemory\Help & Examples\C#\smExample\obj\Debug\smExample.csproj.GenerateResource.Cache
+C:\Users\Eros\gitProjects\sharedmemory\Help & Examples\C#\smExample\obj\Debug\smExample.csprojAssemblyReference.cache
+C:\Users\Eros\gitProjects\sharedmemory\Help & Examples\C#\smExample\obj\Debug\smExample.csproj.CoreCompileInputs.cache
