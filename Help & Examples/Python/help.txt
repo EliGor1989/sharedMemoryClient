@@ -1,0 +1,17 @@
+﻿###########################################################################
+   ____ ____ ____ ____ ____ ____ _________ ____ ____ ____ ____ ____ ____ 
+  ||S |||h |||a |||r |||e |||d |||       |||M |||e |||m |||o |||r |||y ||
+  ||__|||__|||__|||__|||__|||__|||_______|||__|||__|||__|||__|||__|||__||
+  |/__\|/__\|/__\|/__\|/__\|/__\|/_______\|/__\|/__\|/__\|/__\|/__\|/__\|
+
+
+############################ Configuration ################################
+EXAMPLE PERFORMED IN PYTHON 3.7
+
+Functional program, to test the manipulation of shared memories in both 
+32 and 64 bits, change the compiler for the desired architecture and also 
+change the dll it uses to:
+
+32bits = smClient.dll
+64bits = smClient64.dll
+

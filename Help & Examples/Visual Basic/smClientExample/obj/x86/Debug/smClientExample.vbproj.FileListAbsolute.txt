@@ -1,0 +1,18 @@
+C:\Users\Eros\documents\visual studio 2015\Projects\smClientExample\smClientExample\bin\x86\Debug\smClientExample.exe
+C:\Users\Eros\documents\visual studio 2015\Projects\smClientExample\smClientExample\bin\x86\Debug\smClientExample.pdb
+C:\Users\Eros\documents\visual studio 2015\Projects\smClientExample\smClientExample\bin\x86\Debug\smClientExample.xml
+C:\Users\Eros\documents\visual studio 2015\Projects\smClientExample\smClientExample\obj\x86\Debug\smClientExample.Resources.resources
+C:\Users\Eros\documents\visual studio 2015\Projects\smClientExample\smClientExample\obj\x86\Debug\smClientExample.vbproj.GenerateResource.Cache
+C:\Users\Eros\documents\visual studio 2015\Projects\smClientExample\smClientExample\obj\x86\Debug\smClientExample.exe
+C:\Users\Eros\documents\visual studio 2015\Projects\smClientExample\smClientExample\obj\x86\Debug\smClientExample.xml
+C:\Users\Eros\documents\visual studio 2015\Projects\smClientExample\smClientExample\obj\x86\Debug\smClientExample.pdb
+C:\Users\Eros\gitProjects\sharedmemory\Help & Examples\Visual Basic\smClientExample\obj\x86\Debug\smClientExample.Resources.resources
+C:\Users\Eros\gitProjects\sharedmemory\Help & Examples\Visual Basic\smClientExample\obj\x86\Debug\smClientExample.vbproj.GenerateResource.Cache
+C:\Users\Eros\gitProjects\sharedmemory\Help & Examples\Visual Basic\smClientExample\bin\x86\Debug\smClientExample.exe
+C:\Users\Eros\gitProjects\sharedmemory\Help & Examples\Visual Basic\smClientExample\bin\x86\Debug\smClientExample.pdb
+C:\Users\Eros\gitProjects\sharedmemory\Help & Examples\Visual Basic\smClientExample\bin\x86\Debug\smClientExample.xml
+C:\Users\Eros\gitProjects\sharedmemory\Help & Examples\Visual Basic\smClientExample\obj\x86\Debug\smClientExample.exe
+C:\Users\Eros\gitProjects\sharedmemory\Help & Examples\Visual Basic\smClientExample\obj\x86\Debug\smClientExample.xml
+C:\Users\Eros\gitProjects\sharedmemory\Help & Examples\Visual Basic\smClientExample\obj\x86\Debug\smClientExample.pdb
+C:\Users\Eros\gitProjects\sharedmemory\Help & Examples\Visual Basic\smClientExample\obj\x86\Debug\smClientExample.vbprojAssemblyReference.cache
+C:\Users\Eros\gitProjects\sharedmemory\Help & Examples\Visual Basic\smClientExample\obj\x86\Debug\smClientExample.vbproj.CoreCompileInputs.cache
