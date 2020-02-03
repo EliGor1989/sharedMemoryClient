@@ -1,0 +1,335 @@
+//---------------------------------------------------------------------------
+
+#include <vcl.h>
+#pragma hdrstop
+#include <ctype.h>
+#include <process.h>
+#include "main.h"
+#include "thView.h"
+
+//---------------------------------------------------------------------------
+#pragma package(smart_init)
+#pragma resource "*.dfm"
+TForm1 *Form1;
+static int maxRows;
+
+typedef int(*FNCMEMPTR)(char *, int, int);
+
+typedef void(*FNFREEMPTR)(void); //Pointer to the function "void liberarMemorias();"
+                                 //The same pointer to the function "void liberarVistas();"
+
+
+FNCMEMPTR fnMemCreate;
+FNFREEMPTR fnMemFree;
+
+//---------------------------------------------------------------------------
+__fastcall TForm1::TForm1(TComponent* Owner)
+        : TForm(Owner)
+{
+}
+
+//--------------------------------------------------------------------------
+void __fastcall TForm1::btnMoreClick(TObject *Sender)
+{
+        //Increase the number of rows
+        MemoriesDetailsGrid->RowCount ++;
+}
+//---------------------------------------------------------------------------
+void __fastcall TForm1::btnLessClick(TObject *Sender)
+{
+        //Decrease the number of rows, the minimum allowed is 1 row
+        if(MemoriesDetailsGrid->RowCount >2)
+                MemoriesDetailsGrid->RowCount --;
+}
+//---------------------------------------------------------------------------
+void __fastcall TForm1::FormCreate(TObject *Sender)
+{
+        MemoriesDetailsGrid->Cells[0][0] = "Name";
+        MemoriesDetailsGrid->Cells[1][0] = "Quantity";
+        MemoriesDetailsGrid->Cells[2][0] = "Type";
+
+        MemoriesDetailsGrid->Cells[0][1] = "Memory0";
+        MemoriesDetailsGrid->Cells[1][1] = "10";
+        MemoriesDetailsGrid->Cells[2][1] = "Integer";
+        Form1->Width = 257;
+        Visualize->Enabled = false;
+        Liberate->Enabled = false;
+        Hide->Enabled = false;
+
+        #if defined(_WIN64)
+        hInst = LoadLibrary(TEXT("smClient64.dll"));
+        #elif defined(_WIN32)
+        //hInst = LoadLibrary(TEXT("C:\\Windows\\SysNative\\smClient.dll"));
+        hInst = LoadLibrary(TEXT("smClient.dll"));
+        #endif
+
+        //We check if the dll was found and loaded correctly
+	if (!hInst) {
+		Application->MessageBox("Cannot find .dll Shared Memories manager.",
+				"Error", MB_OK | MB_ICONERROR);
+		Application->Terminate();
+	}
+
+	fnMemCreate = (FNCMEMPTR)GetProcAddress(hInst, "createMemory");
+        fnMemFree = (FNFREEMPTR)GetProcAddress(hInst, "freeMemories");
+}
+//---------------------------------------------------------------------------
+void __fastcall TForm1::MemoriesDetailsGridClick(TObject *Sender)
+{
+        if( MemoriesDetailsGrid->Col == 2 )
+        {
+                TRect Recto     = MemoriesDetailsGrid->CellRect(
+                                        MemoriesDetailsGrid->Col,
+                                        MemoriesDetailsGrid->Row);
+                ComboBox1->Top  = MemoriesDetailsGrid->Top;
+                ComboBox1->Left = MemoriesDetailsGrid->Left;
+                ComboBox1->Top  = ComboBox1->Top + Recto.Top + MemoriesDetailsGrid->GridLineWidth;
+                ComboBox1->Left = ComboBox1->Left + Recto.Left + MemoriesDetailsGrid->GridLineWidth + 1;
+                ComboBox1->Height = (Recto.Bottom - Recto.Top) + 1;
+                ComboBox1->Width  = Recto.Right - Recto.Left;
+                ComboBox1->Visible = True;
+        }
+        else
+                ComboBox1->Visible = False;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::ComboBox1Change(TObject *Sender)
+{
+        MemoriesDetailsGrid->Cells[MemoriesDetailsGrid->Col][MemoriesDetailsGrid->Row] =
+        ComboBox1->Items->Strings[ComboBox1->ItemIndex];
+}
+//---------------------------------------------------------------------------
+
+
+
+
+
+void __fastcall TForm1::CreateClick(TObject *Sender)
+{
+        int tipo;
+        maxRows = 0;
+        int banError = 0;
+
+        //Verify that the necessary data has been entered
+        for(int iii = 1;iii<MemoriesDetailsGrid->RowCount;iii++){
+                if(MemoriesDetailsGrid->Cells[0][iii].Trim().Length() == 0){
+                        banError = 1;
+                        Application->MessageBox("Field 'name' not entered..",
+				"Atention", MB_OK | MB_ICONSTOP);
+                        break;
+                }
+                if(MemoriesDetailsGrid->Cells[1][iii].Trim().Length() == 0){
+                        banError = 1;
+                        Application->MessageBox("Define number of variables to store",
+				"Atention", MB_OK | MB_ICONSTOP);
+                        break;
+                }else{
+                        for(int x = 1; x <= MemoriesDetailsGrid->Cells[1][iii].Trim().Length();x++)
+                        {
+                                if( ! isdigit( MemoriesDetailsGrid->Cells[1][iii].Trim()[x] ) )
+                                {
+                                        banError = 1;
+                                        Application->MessageBox("Invalid Amount",
+				                "Atention", MB_OK | MB_ICONSTOP);
+                                        break;
+                                }
+                        }
+                }
+                if(MemoriesDetailsGrid->Cells[2][iii].Trim().Length() == 0){
+                        banError = 1;
+                        Application->MessageBox("Choose the type of variables",
+				"Atention", MB_OK | MB_ICONSTOP);
+                        break;
+                }
+
+        }
+
+        if(banError == 0){
+                banError = 0;
+                //Form1->Width = 326;
+                //Form1->Width = Form1->Width + 70;
+                sgViews->Width = 10;
+                Label4->Left = 280;
+                for(int iii = 1;iii<MemoriesDetailsGrid->RowCount;iii++){
+                        if(MemoriesDetailsGrid->Cells[2][iii] == "Integer")
+                                tipo = 1;
+                        if(MemoriesDetailsGrid->Cells[2][iii] == "Float")
+                                tipo = 2;
+                        if(MemoriesDetailsGrid->Cells[2][iii] == "Double")
+                                tipo = 3;
+                        if(MemoriesDetailsGrid->Cells[2][iii] == "String")
+                                tipo = 4;
+                        sgViews->ColCount = MemoriesDetailsGrid->RowCount - 1;
+                        if(fnCrearMem(MemoriesDetailsGrid->Cells[0][iii].c_str(),
+                                atoi(MemoriesDetailsGrid->Cells[1][iii].c_str()), tipo) == 0){
+                                sgViews->Cells[iii-1][0] = MemoriesDetailsGrid->Cells[0][iii];
+                                //Form1->Width = Form1->Width + 70;
+                                sgViews->Width = sgViews->Width + 70;
+                                Label4->Left = Label4->Left + 10;
+                                if(atoi(MemoriesDetailsGrid->Cells[1][iii].c_str()) > maxRows){
+                                        maxRows = atoi(MemoriesDetailsGrid->Cells[1][iii].c_str());
+                                }
+                        }else{
+                                banError++;
+                        }
+
+                }
+                sgViews->RowCount = maxRows+1; //se pone mas 1 por el head de la columna
+                if(maxRows > 12){
+                        sgViews->Height =  13 * 24;
+                }else{
+                        sgViews->Height = ((maxRows + 1) * 24);
+                }
+        }
+        if(banError == 0){
+                Application->MessageBox("Memories created suceffully!.",
+				"Shared Memory", MB_OK | MB_ICONINFORMATION);
+                Label2->Caption = "Created";
+                Label2->Color = clLime;
+                Visualize->Enabled = ((Hide->Enabled == false) ? true : false);
+                //Ocultar1->Enabled = true;
+                Liberate->Enabled = true;
+                Create->Enabled = false;
+                btnMore->Enabled = false;
+                btnLess->Enabled = false;
+                MemoriesDetailsGrid->Enabled = false;
+        }else{
+                Application->MessageBox("Error al gestionar Memorias Compartidas.",
+				"Error", MB_OK | MB_ICONERROR);
+        }
+
+
+
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::LiberateClick(TObject *Sender)
+{
+
+        stopThread = 1;
+        fnLibMem();
+        Application->MessageBox("Memories were free!.",
+				"Shared Memory", MB_OK | MB_ICONINFORMATION);
+        //btnVer->Enabled = false;
+        Liberate->Enabled = false;
+        Create->Enabled = true;
+        btnMore->Enabled = true;
+        btnLess->Enabled = true;
+        MemoriesDetailsGrid->Enabled = true;
+        Label2->Caption = "Waiting";
+        Label2->Color = clMenuHighlight;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::VisualizeClick(TObject *Sender)
+{
+
+        stopThread = 0;
+        Form1->Width = 257;
+        Form1->Width = Form1->Width + (65*MemoriesDetailsGrid->RowCount);
+        thView *viewThread = new thView(false);
+        Hide->Enabled = true;
+        Visualize->Enabled = false;
+
+
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::HideClick(TObject *Sender)
+{
+       Form1->Width = 257;
+       stopThread = 1;
+       Hide->Enabled = false;
+       Visualize->Enabled = true;
+
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::ExitClick(TObject *Sender)
+{
+
+        if( Application->MessageBox(
+			"You want to close the Shared Memory Manager?",
+			"Action Confirmation",
+			MB_YESNO | MB_ICONQUESTION) == IDYES )
+        {
+                if(Liberate->Enabled == true){
+                        stopThread = 1;
+                        fnLibMem();
+                        Application->MessageBox("Memories released successfully!.",
+				"Shared Memory", MB_OK | MB_ICONINFORMATION);
+                }
+
+                Application->Terminate();
+        }
+
+}
+//---------------------------------------------------------------------------
+
+
+void __fastcall TForm1::SaveClick(TObject *Sender)
+{
+        SaveDialog1->Filter = "Memories Configuration|*.sav;...";
+        if(SaveDialog1->Execute())
+        {
+                if(ExtractFileExt(SaveDialog1->FileName) != ".sav")
+                SaveDialog1->FileName = SaveDialog1->FileName + ".sav";
+               
+                TStringList *Table1 = new TStringList;
+                for(int i = 0 ; i<MemoriesDetailsGrid->RowCount ; i++)
+                {                                                                                    
+                        Table1->Add(MemoriesDetailsGrid->Rows[i]->DelimitedText);
+                }
+                Table1->SaveToFile(SaveDialog1->FileName) ;
+                Application->MessageBox("Settings saved successfully!.",
+				"Shared Memory", MB_OK | MB_ICONINFORMATION);
+                delete Table1;
+
+        }
+
+}
+//---------------------------------------------------------------------------
+
+
+void __fastcall TForm1::OpenClick(TObject *Sender)
+{
+        OpenDialog1->Filter = "Memories Configuration|*.sav;...";
+        if(OpenDialog1->Execute())
+        {
+
+                TStringList *Table1 = new TStringList;
+                Table1->LoadFromFile(OpenDialog1->FileName);
+                MemoriesDetailsGrid->RowCount = Table1->Count;
+
+                for(int i = 0 ; i<MemoriesDetailsGrid->RowCount ; i++)
+                {
+                        MemoriesDetailsGrid->Rows[i]->DelimitedText = Table1->Strings[i] ;
+                }
+
+                delete Table1;
+        }        
+}
+//---------------------------------------------------------------------------
+
+
+void __fastcall TForm1::FormCloseQuery(TObject *Sender, bool &CanClose)
+{
+
+        if( Application->MessageBox(
+			"You want to close the Shared Memory Manager?",
+			"Action Confirmation",
+			MB_YESNO | MB_ICONQUESTION) == IDYES )
+        {
+                if(Liberate->Enabled == true){
+                        stopThread = 1;
+                        fnLibMem();
+                        Application->MessageBox("Memories released correctly!",
+				"Shared Memory", MB_OK | MB_ICONINFORMATION);
+                }
+
+                Application->Terminate();
+        }        
+}
+//---------------------------------------------------------------------------
+
