@@ -21,7 +21,7 @@ To perform a quick test of operation and use we need:
 - Sample codes in the language or application we want **(Help & Examples)**
 
 #Usage
-##### Administration Panel 
+#### Administration Panel 
 Once we have downloaded the necessary folders and files, the first thing is to run the panel for creating shared memories "Admin Panel\smProject.exe", in this administration panel we can perform the following actions:
 - Specify the shared memories that we want to create, for which we need to establish: Name of the shared memory, number of values to be stored and the type of value to be stored.
 - Create and release the specified shared memories
@@ -29,9 +29,10 @@ Once we have downloaded the necessary folders and files, the first thing is to r
 - Save and load the list of specified memories
 
 For quick use of the examples, you must load the sample memory scheme File-> Open "exampleCreation.sav" and then initialize the Memories-> create memories.
+
 <img src="Images/SMpanel.jpg" width="300" />
 
-##### Client library
+#### Client library
 The next step is to choose which programming language or application we want to test reading and writing in shared memories, the available examples are:
 - C # (Visual Studio Standard and Unity3D)
 - C / C ++
@@ -48,7 +49,7 @@ In all the examples the steps to follow are the same:
 
 A more detailed tutorial about the functions can be found in the source code file or in the Wiki [here](https://github.com/portalTS/json-gui/wiki).
 
-##### Matlab Example
+#### Matlab Example
 Example of using the dynamic link library in Matlab.
 1. Load de Dynamic Link Library. If we are in a 64-bit Matlab we load "smClient64.dll", the library must be in the same place where we are or in the System32 folder.
 ```
@@ -73,7 +74,7 @@ Write in the memory "Memory1" in position 1 the value 30.1204
 calllib('smClient64','setFloat','Memory1',1,30.1204)
 ``` 
 
-##### C# Example
+#### C# Example
 The following codes work perfectly in both a project created in Visual Studio in C # language and if we create a project in Unity3D that uses code in C #.
 
 We compile and execute the C # sample project that was carried out in Visual Studio 2017.
@@ -118,7 +119,7 @@ Read in the Float memory "Memory1" in position 1.
 float Value = getFloat("Memory1", 1);
 ```
 
-##### Result
+#### Result
 What we did was that Matlab records whole numbers in an Integer type memory and also floating numbers in a floating type memory, in the same way in Unity3D these values are read.
 
 Note: For more information on the available functions, you can consult the Wiki page or in the example codes the respective explanations to each code fragment are commented.
