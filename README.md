@@ -1,10 +1,10 @@
 # SharedMemoryClient
 **SMClient** is a project that offers dynamic link libraries (.DLL) with functions for creating, reading, writing and releasing virtual memories. 
-The use of **Shared Memories is a type of Interprocess Communication (IPC)** that allows several programs to access a memory location making it possible to transfer data between processes and between applications.
+The use of **Shared Memories is a type of Interprocess Communication (IPC)** that allows two or several programs to access a memory location making it possible to transfer data between processes and/or between applications.
 
 # Content
 The project is divided into two parts:
-Executable files that are ready to be used by the user.
+Executable files that are ready to be used.
 - Admin Panel
 - Libraries
 - Help & Examples
@@ -15,22 +15,24 @@ Source codes that can be studied and modified.
 	- SMClient
 
 # Quick Start
-To perform a quick test of operation and use we need:
+To perform a quick test of Shared Memory Client we need:
 - The shared memory creation and management panel **(Admin Panel)**
-- The dynamic link library with functions **(Libraries)**
+- The dynamic link library **(Libraries)**
 - Sample codes in the language or application we want **(Help & Examples)**
 
 #Usage
 #### Administration Panel 
 Once we have downloaded the necessary folders and files, the first thing is to run the panel for creating shared memories "Admin Panel\smProject.exe", in this administration panel we can perform the following actions:
-- Specify the shared memories that we want to create, for which we need to establish: Name of the shared memory, number of values to be stored and the type of value to be stored.
-- Create and release the specified shared memories
-- View the data that is stored in the shared memories
-- Save and load the list of specified memories
+- Specify the shared memories that we want to create, for which we need to establish: Name of the shared memory (Name), number of values to be stored (Quantity) and the type of value to be stored (Type).
+- Create and release the specified shared memories.
+- View the data that is stored in the shared memories.
+- Save and load our memories configurations.
 
-For quick use of the examples, you must load the sample memory scheme File-> Open "exampleCreation.sav" and then initialize the Memories-> create memories.
+For quick use of the examples, you must load the sample memory scheme "File-> Open" the name of the file is "exampleCreation.sav" and then initialize the meomries in "Memories-> create memories."
 
 <img src="Images/SMpanel.jpg" width="300" />
+
+**NOTE:** If we want to visualize the data found in the shared memories, we can open the viewer in "Views-> Visualize"
 
 #### Client library
 The next step is to choose which programming language or application we want to test reading and writing in shared memories, the available examples are:
@@ -43,15 +45,17 @@ The next step is to choose which programming language or application we want to 
 - Visual basic
 
 In all the examples the steps to follow are the same:
-1. First we need to ** Load de Dynamic Link Library** (For 32Bits or 64Bits) depends on your application. The library must be in the same place as the executable or it can be in the System32 folder.
-2. Then we must **open the shared memory **with which we wish to work by calling the openMemory function, specifying the name of the memory and the type of memory (We open all the memories with which we wish to work).
-3. Once the memory (s) are open **we can read and/or write** to it using the function corresponding to each type of variable (Integer, float, double, char *).  
+1. First we need to **Load de Dynamic Link Library** (For 32Bits or 64Bits) depends on your application. The library must be in the same place as the executable or it can be in the System32 folder.
+2. Then we must **open the shared memory** with which we wish to work by calling the openMemory function, specifying the name of the memory and the type of memory (We open all the memories with which we wish to work).
+3. Once the memory(s) are open **we can read and/or write** to it using the function corresponding to each type of variable (Integer, float, double, char *).  
 
-A more detailed tutorial about the functions can be found in the source code file or in the Wiki [here](https://github.com/portalTS/json-gui/wiki).
+A more detailed explanation about the functions can be found in the source code file or in the Wiki [here](https://github.com/EliGor1989/sharedMemoryClient/wiki/Functions-in-the-Library).
 
 #### Matlab Example
 Example of using the dynamic link library in Matlab.
-1. Load de Dynamic Link Library. If we are in a 64-bit Matlab we load "smClient64.dll", the library must be in the same place where we are or in the System32 folder.
+1. Load the Dynamic Link Library. If we are in a 64-bit Matlab we load "smClient64.dll", the library must be in the same place where we are or in the System32 folder.
+All usage information is in the Matlab.m sample file
+NOTE: If you have any problems running this example like "No supported compiler was found", you can check the help on the Wiki page [here](https://github.com/EliGor1989/sharedMemoryClient/wiki/Trouble-help#2-error-error-using-loadlibrary-no-supported-compiler-was-found-you-can-install-the-freely-available-mingw-w64).
 ```
 loadlibrary('smClient64.dll','./smClient.h')
 ```
@@ -61,7 +65,7 @@ Open an Integer memory (1 means Integer Memory)
 calllib('smClient64','openMemory','Memory0',1)
 ``` 
 Open a Float memory (2 means Float Memory)
-```
+```	
 calllib('smClient64','openMemory','Memory1',2) 
 ```
 3. We can read and/or write in memory.
