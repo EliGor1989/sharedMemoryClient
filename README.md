@@ -108,15 +108,15 @@ static extern int openMemory(String name, int type);
 ```
 If we want, we can check how C# open a Shared Memory, checking the code from the Open Button. In the parameters 1 means Integer Memory.
 
-```
+```csharp
 int retOpen = openMemory("Memory0", 1);
 ``` 
 Open a Float memory (2 means Float Memory)
-```
+```csharp
 int retOpen = openMemory("Memory1", 2);
 ```
 2. Now we can Write/Read in the shared memories. C# can use the functions to get the Integer and Float values because we have declare how to work with the dll.
-```cshartp
+```csharp
 [DllImport(dllPath)]
 static extern int getInt(String memName, int position);
 
@@ -128,11 +128,11 @@ If we want to write, just set the position where we want to save a value and the
 The codes used for get the values which were saved from Matlab are these.
 
 Read in the Integer memory "Memory0" in position 2.
-```
+```csharp
 int value = getInt("Memory0", 2);
 ``` 
 Read in the Float memory "Memory1" in position 1.
-```
+```csharp
 float Value = getFloat("Memory1", 1);
 ```
 
