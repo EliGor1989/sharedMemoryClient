@@ -7,3 +7,12 @@ C:\Users\Eros\gitProjects\sharedmemory\Help & Examples\C#\smExample\obj\x64\Debu
 C:\Users\Eros\gitProjects\sharedmemory\Help & Examples\C#\smExample\obj\x64\Debug\smExample.pdb
 C:\Users\Eros\gitProjects\sharedmemory\Help & Examples\C#\smExample\obj\x64\Debug\smExample.csprojAssemblyReference.cache
 C:\Users\Eros\gitProjects\sharedmemory\Help & Examples\C#\smExample\obj\x64\Debug\smExample.csproj.CoreCompileInputs.cache
+C:\Users\Eros\gitHub\sharedMemoryClient\Help & Examples\C#\smExample\bin\x64\Debug\smExample.exe
+C:\Users\Eros\gitHub\sharedMemoryClient\Help & Examples\C#\smExample\bin\x64\Debug\smExample.pdb
+C:\Users\Eros\gitHub\sharedMemoryClient\Help & Examples\C#\smExample\obj\x64\Debug\smExample.csprojAssemblyReference.cache
+C:\Users\Eros\gitHub\sharedMemoryClient\Help & Examples\C#\smExample\obj\x64\Debug\smExample.Form1.resources
+C:\Users\Eros\gitHub\sharedMemoryClient\Help & Examples\C#\smExample\obj\x64\Debug\smExample.Properties.Resources.resources
+C:\Users\Eros\gitHub\sharedMemoryClient\Help & Examples\C#\smExample\obj\x64\Debug\smExample.csproj.GenerateResource.cache
+C:\Users\Eros\gitHub\sharedMemoryClient\Help & Examples\C#\smExample\obj\x64\Debug\smExample.csproj.CoreCompileInputs.cache
+C:\Users\Eros\gitHub\sharedMemoryClient\Help & Examples\C#\smExample\obj\x64\Debug\smExample.exe
+C:\Users\Eros\gitHub\sharedMemoryClient\Help & Examples\C#\smExample\obj\x64\Debug\smExample.pdb
