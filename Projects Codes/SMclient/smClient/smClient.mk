@@ -5,16 +5,15 @@
 ## Debug
 ProjectName            :=smClient
 ConfigurationName      :=Debug
-WorkspaceConfiguration := $(ConfigurationName)
-WorkspacePath          :=C:/Users/Eros/gitProjects/sharedmemory/SMclient
-ProjectPath            :=C:/Users/Eros/gitProjects/sharedmemory/SMclient/smClient
-IntermediateDirectory  :=../build-$(ConfigurationName)/smClient
-OutDir                 :=../build-$(ConfigurationName)/smClient
+WorkspacePath          :="C:/Users/Eros/gitHub/sharedMemoryClient/Projects Codes/SMclient"
+ProjectPath            :="C:/Users/Eros/gitHub/sharedMemoryClient/Projects Codes/SMclient/smClient"
+IntermediateDirectory  :=./Debug
+OutDir                 := $(IntermediateDirectory)
 CurrentFileName        :=
 CurrentFilePath        :=
 CurrentFileFullPath    :=
 User                   :=Eros
-Date                   :=30/01/2020
+Date                   :=04/03/2020
 CodeLitePath           :="C:/Program Files/CodeLite"
 LinkerName             :=C:/TDM-GCC-32/bin/g++.exe
 SharedObjectLinkerName :=C:/TDM-GCC-32/bin/g++.exe -shared -fPIC
@@ -28,13 +27,14 @@ OutputSwitch           :=-o
 LibraryPathSwitch      :=-L
 PreprocessorSwitch     :=-D
 SourceSwitch           :=-c 
-OutputFile             :=..\build-$(ConfigurationName)\lib\$(ProjectName).dll
+OutputFile             :=$(IntermediateDirectory)/$(ProjectName).dll
 Preprocessors          :=
 ObjectSwitch           :=-o 
 ArchiveOutputSwitch    := 
 PreprocessOnlySwitch   :=-E
-ObjectsFileList        :=$(IntermediateDirectory)/ObjectsList.txt
+ObjectsFileList        :="smClient.txt"
 PCHCompileFlags        :=
+MakeDirCommand         :=makedir
 RcCmpOptions           := 
 RcCompilerName         :=C:/TDM-GCC-32/bin/windres.exe
 LinkOptions            :=  
@@ -62,7 +62,7 @@ AS       := C:/TDM-GCC-32/bin/as.exe
 ## User defined environment variables
 ##
 CodeLiteDir:=C:\Program Files\CodeLite
-Objects0=../build-$(ConfigurationName)/smClient/functions.c$(ObjectSuffix) ../build-$(ConfigurationName)/smClient/smClient.c$(ObjectSuffix) 
+Objects0=$(IntermediateDirectory)/functions.c$(ObjectSuffix) $(IntermediateDirectory)/smClient.c$(ObjectSuffix) 
 
 
 
@@ -72,21 +72,22 @@ Objects=$(Objects0)
 ## Main Build Targets 
 ##
 .PHONY: all clean PreBuild PrePreBuild PostBuild MakeIntermediateDirs
-all: MakeIntermediateDirs $(OutputFile)
+all: $(OutputFile)
 
-$(OutputFile): ../build-$(ConfigurationName)/smClient/.d $(Objects) 
-	@if not exist "..\build-$(ConfigurationName)\smClient" mkdir "..\build-$(ConfigurationName)\smClient"
+$(OutputFile): $(IntermediateDirectory)/.d $(Objects) 
+	@$(MakeDirCommand) $(@D)
 	@echo "" > $(IntermediateDirectory)/.d
 	@echo $(Objects0)  > $(ObjectsFileList)
 	$(SharedObjectLinkerName) $(OutputSwitch)$(OutputFile) @$(ObjectsFileList) $(LibPath) $(Libs) $(LinkOptions)
-	@echo rebuilt > $(IntermediateDirectory)/smClient.relink
+	@$(MakeDirCommand) "C:\Users\Eros\gitHub\sharedMemoryClient\Projects Codes\SMclient/.build-debug"
+	@echo rebuilt > "C:\Users\Eros\gitHub\sharedMemoryClient\Projects Codes\SMclient/.build-debug/smClient"
 
 MakeIntermediateDirs:
-	@if not exist "..\build-$(ConfigurationName)\smClient" mkdir "..\build-$(ConfigurationName)\smClient"
-	@if not exist ""..\build-$(ConfigurationName)\lib"" mkdir ""..\build-$(ConfigurationName)\lib""
+	@$(MakeDirCommand) "./Debug"
 
-../build-$(ConfigurationName)/smClient/.d:
-	@if not exist "..\build-$(ConfigurationName)\smClient" mkdir "..\build-$(ConfigurationName)\smClient"
+
+$(IntermediateDirectory)/.d:
+	@$(MakeDirCommand) "./Debug"
 
 PreBuild:
 
@@ -94,28 +95,24 @@ PreBuild:
 ##
 ## Objects
 ##
-../build-$(ConfigurationName)/smClient/functions.c$(ObjectSuffix): functions.c ../build-$(ConfigurationName)/smClient/functions.c$(DependSuffix)
-	$(CC) $(SourceSwitch) "C:/Users/Eros/gitProjects/sharedmemory/SMclient/smClient/functions.c" $(CFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/functions.c$(ObjectSuffix) $(IncludePath)
-../build-$(ConfigurationName)/smClient/functions.c$(DependSuffix): functions.c
-	@$(CC) $(CFLAGS) $(IncludePath) -MG -MP -MT../build-$(ConfigurationName)/smClient/functions.c$(ObjectSuffix) -MF../build-$(ConfigurationName)/smClient/functions.c$(DependSuffix) -MM functions.c
+$(IntermediateDirectory)/functions.c$(ObjectSuffix): functions.c
+	@$(CC) $(CFLAGS) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/functions.c$(ObjectSuffix) -MF$(IntermediateDirectory)/functions.c$(DependSuffix) -MM functions.c
+	$(CC) $(SourceSwitch) "C:/Users/Eros/gitHub/sharedMemoryClient/Projects Codes/SMclient/smClient/functions.c" $(CFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/functions.c$(ObjectSuffix) $(IncludePath)
+$(IntermediateDirectory)/functions.c$(PreprocessSuffix): functions.c
+	$(CC) $(CFLAGS) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/functions.c$(PreprocessSuffix) functions.c
 
-../build-$(ConfigurationName)/smClient/functions.c$(PreprocessSuffix): functions.c
-	$(CC) $(CFLAGS) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) ../build-$(ConfigurationName)/smClient/functions.c$(PreprocessSuffix) functions.c
-
-../build-$(ConfigurationName)/smClient/smClient.c$(ObjectSuffix): smClient.c ../build-$(ConfigurationName)/smClient/smClient.c$(DependSuffix)
-	$(CC) $(SourceSwitch) "C:/Users/Eros/gitProjects/sharedmemory/SMclient/smClient/smClient.c" $(CFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/smClient.c$(ObjectSuffix) $(IncludePath)
-../build-$(ConfigurationName)/smClient/smClient.c$(DependSuffix): smClient.c
-	@$(CC) $(CFLAGS) $(IncludePath) -MG -MP -MT../build-$(ConfigurationName)/smClient/smClient.c$(ObjectSuffix) -MF../build-$(ConfigurationName)/smClient/smClient.c$(DependSuffix) -MM smClient.c
-
-../build-$(ConfigurationName)/smClient/smClient.c$(PreprocessSuffix): smClient.c
-	$(CC) $(CFLAGS) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) ../build-$(ConfigurationName)/smClient/smClient.c$(PreprocessSuffix) smClient.c
+$(IntermediateDirectory)/smClient.c$(ObjectSuffix): smClient.c
+	@$(CC) $(CFLAGS) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/smClient.c$(ObjectSuffix) -MF$(IntermediateDirectory)/smClient.c$(DependSuffix) -MM smClient.c
+	$(CC) $(SourceSwitch) "C:/Users/Eros/gitHub/sharedMemoryClient/Projects Codes/SMclient/smClient/smClient.c" $(CFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/smClient.c$(ObjectSuffix) $(IncludePath)
+$(IntermediateDirectory)/smClient.c$(PreprocessSuffix): smClient.c
+	$(CC) $(CFLAGS) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/smClient.c$(PreprocessSuffix) smClient.c
 
 
--include ../build-$(ConfigurationName)/smClient//*$(DependSuffix)
+-include $(IntermediateDirectory)/*$(DependSuffix)
 ##
 ## Clean
 ##
 clean:
-	$(RM) -r $(IntermediateDirectory)
+	$(RM) -r ./Debug/
 
 

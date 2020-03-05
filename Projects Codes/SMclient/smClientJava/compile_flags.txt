@@ -5,8 +5,8 @@
 -IC:\TDM-GCC-64\include
 -IC:\TDM-GCC-64\lib\gcc\x86_64-w64-mingw32\5.1.0\include-fixed
 -IC:\TDM-GCC-64\x86_64-w64-mingw32\include
--IC:\Users\Eros\gitProjects\sharedmemory\SMclient\smClientJava
--I"C:\Program Files\Java\jdk-12.0.2\include"
--I"C:\Program Files\Java\jdk-12.0.2\include\win32"
+-I"C:\Users\Eros\gitHub\sharedMemoryClient\Projects Codes\SMclient\smClientJava"
+-I"\\"C\Program Files\Java\jdk-12.0.2\include""
+-I"\\"C\Program Files\Java\jdk-12.0.2\include\win32""
 -target
 x86_64-pc-windows-gnu

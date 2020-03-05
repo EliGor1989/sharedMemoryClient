@@ -13,11 +13,6 @@
 #include <string.h>
 #include <windows.h>
 #include <tchar.h>
-#define EXPORT __declspec(dllexport)
-
-//#define CONVENTION __fastcall
-//#define CONVENTION __cdecl
-#define CONVENTION __stdcall
 
 EXPORT int CONVENTION  openMemory
   (char *memoryName, int typeCode){

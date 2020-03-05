@@ -1,1 +1,1 @@
-./Debug/main.c.o   
+./Debug/functions.c.o ./Debug/smClient.c.o   

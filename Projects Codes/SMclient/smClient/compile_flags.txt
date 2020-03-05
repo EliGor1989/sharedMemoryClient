@@ -4,6 +4,6 @@
 -IC:\TDM-GCC-32\lib\gcc\mingw32\5.1.0\include
 -IC:\TDM-GCC-32\include
 -IC:\TDM-GCC-32\lib\gcc\mingw32\5.1.0\include-fixed
--IC:\Users\Eros\gitProjects\sharedmemory\SMclient\smClient
+-I"C:\Users\Eros\gitHub\sharedMemoryClient\Projects Codes\SMclient\smClient"
 -target
-x86_64-pc-windows-gnu
+i686-pc-windows-gnu

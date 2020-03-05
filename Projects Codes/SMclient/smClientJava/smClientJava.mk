@@ -5,16 +5,15 @@
 ## Debug
 ProjectName            :=smClientJava
 ConfigurationName      :=Debug
-WorkspaceConfiguration := $(ConfigurationName)
-WorkspacePath          :=C:/Users/Eros/gitProjects/sharedmemory/SMclient
-ProjectPath            :=C:/Users/Eros/gitProjects/sharedmemory/SMclient/smClientJava
-IntermediateDirectory  :=../build-$(ConfigurationName)/smClientJava
-OutDir                 :=../build-$(ConfigurationName)/smClientJava
+WorkspacePath          :="C:/Users/Eros/gitHub/sharedMemoryClient/Projects Codes/SMclient"
+ProjectPath            :="C:/Users/Eros/gitHub/sharedMemoryClient/Projects Codes/SMclient/smClientJava"
+IntermediateDirectory  :=./Debug
+OutDir                 := $(IntermediateDirectory)
 CurrentFileName        :=
 CurrentFilePath        :=
 CurrentFileFullPath    :=
 User                   :=Eros
-Date                   :=30/01/2020
+Date                   :=04/03/2020
 CodeLitePath           :="C:/Program Files/CodeLite"
 LinkerName             :=C:/TDM-GCC-64/bin/g++.exe
 SharedObjectLinkerName :=C:/TDM-GCC-64/bin/g++.exe -shared -fPIC
@@ -28,13 +27,14 @@ OutputSwitch           :=-o
 LibraryPathSwitch      :=-L
 PreprocessorSwitch     :=-D
 SourceSwitch           :=-c 
-OutputFile             :=..\build-$(ConfigurationName)\lib\$(ProjectName).dll
+OutputFile             :=$(IntermediateDirectory)/$(ProjectName).dll
 Preprocessors          :=
 ObjectSwitch           :=-o 
 ArchiveOutputSwitch    := 
 PreprocessOnlySwitch   :=-E
-ObjectsFileList        :=$(IntermediateDirectory)/ObjectsList.txt
+ObjectsFileList        :="smClientJava.txt"
 PCHCompileFlags        :=
+MakeDirCommand         :=makedir
 RcCmpOptions           := 
 RcCompilerName         :=C:/TDM-GCC-64/bin/windres.exe
 LinkOptions            :=  
@@ -62,7 +62,7 @@ AS       := C:/TDM-GCC-64/bin/as.exe
 ## User defined environment variables
 ##
 CodeLiteDir:=C:\Program Files\CodeLite
-Objects0=../build-$(ConfigurationName)/smClientJava/SmClient.cpp$(ObjectSuffix) 
+Objects0=$(IntermediateDirectory)/SmClient.cpp$(ObjectSuffix) 
 
 
 
@@ -72,21 +72,22 @@ Objects=$(Objects0)
 ## Main Build Targets 
 ##
 .PHONY: all clean PreBuild PrePreBuild PostBuild MakeIntermediateDirs
-all: MakeIntermediateDirs $(OutputFile)
+all: $(OutputFile)
 
-$(OutputFile): ../build-$(ConfigurationName)/smClientJava/.d $(Objects) 
-	@if not exist "..\build-$(ConfigurationName)\smClientJava" mkdir "..\build-$(ConfigurationName)\smClientJava"
+$(OutputFile): $(IntermediateDirectory)/.d $(Objects) 
+	@$(MakeDirCommand) $(@D)
 	@echo "" > $(IntermediateDirectory)/.d
 	@echo $(Objects0)  > $(ObjectsFileList)
 	$(SharedObjectLinkerName) $(OutputSwitch)$(OutputFile) @$(ObjectsFileList) $(LibPath) $(Libs) $(LinkOptions)
-	@echo rebuilt > $(IntermediateDirectory)/smClientJava.relink
+	@$(MakeDirCommand) "C:\Users\Eros\gitHub\sharedMemoryClient\Projects Codes\SMclient/.build-debug"
+	@echo rebuilt > "C:\Users\Eros\gitHub\sharedMemoryClient\Projects Codes\SMclient/.build-debug/smClientJava"
 
 MakeIntermediateDirs:
-	@if not exist "..\build-$(ConfigurationName)\smClientJava" mkdir "..\build-$(ConfigurationName)\smClientJava"
-	@if not exist ""..\build-$(ConfigurationName)\lib"" mkdir ""..\build-$(ConfigurationName)\lib""
+	@$(MakeDirCommand) "./Debug"
 
-../build-$(ConfigurationName)/smClientJava/.d:
-	@if not exist "..\build-$(ConfigurationName)\smClientJava" mkdir "..\build-$(ConfigurationName)\smClientJava"
+
+$(IntermediateDirectory)/.d:
+	@$(MakeDirCommand) "./Debug"
 
 PreBuild:
 
@@ -94,20 +95,18 @@ PreBuild:
 ##
 ## Objects
 ##
-../build-$(ConfigurationName)/smClientJava/SmClient.cpp$(ObjectSuffix): SmClient.cpp ../build-$(ConfigurationName)/smClientJava/SmClient.cpp$(DependSuffix)
-	$(CXX) $(IncludePCH) $(SourceSwitch) "C:/Users/Eros/gitProjects/sharedmemory/SMclient/smClientJava/SmClient.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/SmClient.cpp$(ObjectSuffix) $(IncludePath)
-../build-$(ConfigurationName)/smClientJava/SmClient.cpp$(DependSuffix): SmClient.cpp
-	@$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) -MG -MP -MT../build-$(ConfigurationName)/smClientJava/SmClient.cpp$(ObjectSuffix) -MF../build-$(ConfigurationName)/smClientJava/SmClient.cpp$(DependSuffix) -MM SmClient.cpp
-
-../build-$(ConfigurationName)/smClientJava/SmClient.cpp$(PreprocessSuffix): SmClient.cpp
-	$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) ../build-$(ConfigurationName)/smClientJava/SmClient.cpp$(PreprocessSuffix) SmClient.cpp
+$(IntermediateDirectory)/SmClient.cpp$(ObjectSuffix): SmClient.cpp
+	@$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/SmClient.cpp$(ObjectSuffix) -MF$(IntermediateDirectory)/SmClient.cpp$(DependSuffix) -MM SmClient.cpp
+	$(CXX) $(IncludePCH) $(SourceSwitch) "C:/Users/Eros/gitHub/sharedMemoryClient/Projects Codes/SMclient/smClientJava/SmClient.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/SmClient.cpp$(ObjectSuffix) $(IncludePath)
+$(IntermediateDirectory)/SmClient.cpp$(PreprocessSuffix): SmClient.cpp
+	$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/SmClient.cpp$(PreprocessSuffix) SmClient.cpp
 
 
--include ../build-$(ConfigurationName)/smClientJava//*$(DependSuffix)
+-include $(IntermediateDirectory)/*$(DependSuffix)
 ##
 ## Clean
 ##
 clean:
-	$(RM) -r $(IntermediateDirectory)
+	$(RM) -r ./Debug/
 
 
