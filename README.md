@@ -10,7 +10,7 @@ Executable files that are ready to be used.
 - Help & Examples
 
 Source codes that can be studied and modified.
-- Projects Codes
+- Src
 	- SMPanel
 	- SMClient
 

@@ -1,1 +1,0 @@
-../build-Debug/smClient/functions.c.o ../build-Debug/smClient/smClient.c.o   

@@ -1,9 +1,0 @@
-[{
-  "file": "C:\\Users\\Eros\\gitProjects\\SMclientAll\\smClient\\main.h",
-  "directory": "C:\\Users\\Eros\\gitProjects\\SMclientAll\\smClient",
-  "command": "clang  -c C:\\Users\\Eros\\gitProjects\\SMclientAll\\smClient\\main.h -o C:\\Users\\Eros\\gitProjects\\SMclientAll\\smClient\\main.h.o  -I. -I.  -g"
- }, {
-  "file": "C:\\Users\\Eros\\gitProjects\\SMclientAll\\smClient\\main.c",
-  "directory": "C:\\Users\\Eros\\gitProjects\\SMclientAll\\smClient",
-  "command": "clang  -c C:\\Users\\Eros\\gitProjects\\SMclientAll\\smClient\\main.c -o C:\\Users\\Eros\\gitProjects\\SMclientAll\\smClient\\main.c.o  -I. -I.  -g"
- }]

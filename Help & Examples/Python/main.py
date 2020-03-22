@@ -6,7 +6,7 @@ if __name__ == '__main__':
     # Specify whether you want to use the 32 or 64 bit library
     # 32 bits = smClient.dll
     # 64 bits = smClient64.dll
-    dll = 'smClientFcall.dll'
+    dll = 'smClient64.dll'
 
     # Specification of library load folder
     # If we are in a 64-bit system and want to load a dll

@@ -1,0 +1,17 @@
+#ifndef __SHAREDMEMORY_H__
+#define __SHAREDMEMORY_H__
+#endif
+int gestMemoria(int cantidad);
+int crearMemoria(char *nombre, int cantidad, int tipo);
+void liberarMemoria(void);
+
+int abrirMemoria(char *nombre, int tipo);
+int abrirMemoriaString(char *nombre, int cantPalabras);
+int readIntValue(char *nomMemoria, int posicion);
+void writeIntValue(char *nomMemoria, int posicion,int valor);
+void writeFloatValue(char *nomMemoria, int posicion, float valor);
+float readFloatValue(char *nomMemoria, int posicion);
+void writeDoubleValue(char *nomMemoria, int posicion, double valor);
+double readDoubleValue(char *nomMemoria, int posicion);
+void writeStringValue(char *nomMemoria, int posicion, char *str);
+void readStringValue(char *nomMemoria, int posicion, char *str);
