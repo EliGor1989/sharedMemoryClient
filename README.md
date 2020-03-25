@@ -138,6 +138,7 @@ Open an Integer memory (1 means Integer type Memory) and the float memory (2 mea
 ```csharp
 int retOpen = openMemory("Memory0", 1);
 Console.WriteLine(retOpen);
+
 retOpen = openMemory("Memory1", 2);
 Console.WriteLine(retOpen);
 ```
@@ -158,9 +159,11 @@ float floatValue = getFloat("Memory1", 1);
 Console.WriteLine(floatValue);
 ```
 **Now just run our example and visualize the data that Matlab shared with us.**
-If the window closes without giving us the opportunity to view the data, we should only put a little pause at the end of our example.
+If the window closes without giving us the opportunity to view the data, we should only put a little pause at the end of our example and then we can release the views that were created towards shared memories.
+
 ```csharp
 Console.ReadLine();
+freeViews();
 ```
 #### Result
 Following the steps correctly, Matlab stores numbers in an Integer type memory and also floating numbers in a floating type memory. In the same way, these values are read in Unity3D/C#. 
