@@ -1,6 +1,6 @@
 # SharedMemoryClient
-**SMClient** is a project that offers dynamic link libraries (.DLL) with functions for creating, reading, writing and releasing virtual memories. 
-The use of **Shared Memories is a type of Interprocess Communication (IPC)** that allows two or several programs to access a memory location making it possible to transfer data between processes and/or between applications.
+**SMClient** is a project that offers dynamic link libraries (*.dll) with functions for creating, reading, writing and releasing virtual memories. 
+**Shared Memories is a type of Interprocess Communication (IPC)** that allows two or several programs to access a memory location making it possible to transfer data between processes and/or between applications.
 
 # Content
 The project is divided into two parts:
@@ -21,16 +21,16 @@ To perform a quick test of Shared Memory Client we need:
 - Sample codes in the language or application we want **(Help & Examples)**
 
 # Usage
-We will review an example in which Matlab stores two values (Integer and Floating) in Shared Memory and from a C# project we read those values.
+We will review an example where Matlab stores two values (Integer and Floating) in the Shared Memory, and then reading those values from a C# project.
 
 #### Administration Panel 
-Once we have downloaded the necessary folders and files, the first thing is to run the panel for creating shared memories "Admin Panel\smProject.exe", in this administration panel we can perform the following actions:
+Once we have downloaded the necessary folders and files, the first task is to run the panel for creating shared memories "Admin Panel\smProject.exe". In this administration panel, we can perform the following actions:
 - Specify the shared memories that we want to create, for which we need to establish: Name of the shared memory (Name), number of values to be stored (Quantity) and the type of value to be stored (Type).
 - Create and release the specified shared memories.
 - View the data that is stored in the shared memories.
 - Save and load our memories configurations.
 
-For quick use of the examples, you must load the sample memory scheme "File-> Open" the name of the file is "exampleCreation.sav" and then initialize the meomries in "Memories-> create memories."
+For quick use of the examples, you must load the sample memory scheme "File-> Open" the name of the file is "exampleCreation.sav" and then initialize the memories in "Memories-> create memories."
 
 <img src="Images/SMpanel.jpg" width="300" />
 
@@ -49,8 +49,8 @@ The next step is to choose which programming language or application we want to 
 - Visual basic
 
 **NOTE: In all the examples the steps to follow are the same:**
-1. First we need to **Load de Dynamic Link Library** (For 32Bits or 64Bits) depends on your application. The library must be in the same place as the executable or it can be in the System32 folder.
-2. Then we must **open the shared memory** with which we wish to work by calling the openMemory function, specifying the name of the memory and the type of memory (We open all the memories with which we wish to work).
+1. First we need to **Load de Dynamic Link Library** (For 32Bits or 64Bits) depending on your application. The library (*..dll file) must be stored in the same place as the executable or it can be in the System32 folder.
+2. Then we must **open the shared memory** by calling the openMemory function, specifying the name of the memory and the type of memory (Integer = 1; Floating = 2; Double = 3; Char[64] = 4), we must open all the memories needed to work.
 3. Once the memory(s) are open **we can read and/or write** to it using the function corresponding to each type of variable (Integer, float, double, char *).  
 
 A more detailed explanation about the functions can be found in the source code file or [in the Wiki - Clic here](https://github.com/EliGor1989/sharedMemoryClient/wiki/Functions-in-the-Library).
@@ -59,7 +59,9 @@ A more detailed explanation about the functions can be found in the source code 
 Example of using the dynamic link library in Matlab.
 1. Load the Dynamic Link Library. 
 
-If we want to use a 64-bit Matlab we load "smClient64.dll", the library and the header file smClient.h must be in the Current Folder in Matlab or the library have to be in the System32 folder and the header file smClient.h have to be in your current Folder in Matlab.
+If we want to use a 64-bit Matlab we load "smClient64.dll", the library must be in the path that is exploring Matlab, or it must be in a Windows installation folder or in a folder added to the operating system PATH, then the file "smClient.h" must must be in the path that is exploring Matlab. 
+
+In our example the library and the header will be in the current Matlab path, but if you want, you can use the absolute path to the location of your files.
 
 For more information you can check the Matlab.m sample file.
 
