@@ -139,9 +139,9 @@ float Value = getFloat("Memory1", 1);
 ```
 
 #### Result
-What we did was that Matlab records whole numbers in an Integer type memory and also floating numbers in a floating type memory, in the same way in Unity3D/C# these values are read.
+Following the steps correctly, Matlab stores numbers in an Integer type memory and also floating numbers in a floating type memory. In the same way, these values are read in Unity3D/C#. 
 
-Note: For more information on the available functions, you can consult the Wiki page or in the example codes the respective explanations to each code fragment are commented.
+Note: For more information on the available functions, you can read the Wiki page or in the example codes, where the respective explanations to each code fragment are commented.
 
 # Wiki 
 All the necessary information is documented in the source codes of the examples, but if you want to review some more documentation about the project, [you can check the Wiki page here](https://github.com/EliGor1989/sharedMemoryClient/wiki)
