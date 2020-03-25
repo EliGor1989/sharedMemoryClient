@@ -23,6 +23,8 @@ To perform a quick test of Shared Memory Client we need:
 # Usage
 We will review an example where Matlab stores two values (Integer and Floating) in the Shared Memory, and then reading those values from a C# project.
 
+In the libraries folder, you will find the compiled function library for 32bit and 64bit architecture, (The 32bit libraries have been compiled and tested in calling convention stdcall, fastcall and cdecl), all the information about compatibility of the library with different languages programming and application [review in the Wiki - here](https://github.com/EliGor1989/sharedMemoryClient/wiki#library-usage-tests-in-several-programming-languages)
+
 #### Administration Panel 
 Once we have downloaded the necessary folders and files, the first task is to run the panel for creating shared memories "Admin Panel\smProject.exe". In this administration panel, we can perform the following actions:
 - Specify the shared memories that we want to create, for which we need to establish: Name of the shared memory (Name), number of values to be stored (Quantity) and the type of value to be stored (Type).
@@ -59,9 +61,12 @@ A more detailed explanation about the functions can be found in the source code 
 Example of using the dynamic link library in Matlab.
 1. Load the Dynamic Link Library. 
 
-If we want to use a 64-bit Matlab we load "smClient64.dll", the library must be in the path that is exploring Matlab, or it must be in a Windows installation folder or in a folder added to the operating system PATH, then the file "smClient.h" must must be in the path that is exploring Matlab. 
+If we want to use a 64-bit Matlab we load "smClient64.dll", the library must be in the path that is exploring Matlab, or it must be in a Windows installation folder or in a folder added to the operating system PATH, then the file "smClient.h" must be in the path that is exploring Matlab. 
 
-In our example the library and the header will be in the current Matlab path, but if you want, you can use the absolute path to the location of your files.
+- smClient64.dll is located in "Libraries\64Bits\smClient64.dll"
+- smClient.h is located in "Help & Examples\Matlab\smClient.h"
+
+In our example the library and the header will be in the Desktop and then in Matlab we navigate to locate ourselves in the Desktop folder.
 
 For more information you can check the Matlab.m sample file.
 
@@ -93,51 +98,70 @@ calllib('smClient64','setFloat','Memory1',1,30.1204)
 ``` 
 
 #### C# Example
-We compile and execute the C# sample project that was carried out in Visual Studio 2017, or we can just run the compiler file smExample.exe allocated in \Help & Examples\C#\smExample\bin\x64\Debug.
+Example of using the dynamic link library in C # project of console type, we will use Visual Studio 2017,
+1. Load the Dynamic Link Library and all the functions that we are going to use. 
+The first step is to specify the location of the library. In our case we have the library stored on the desktop. 
 
-We can use the example codes perfectly in both a project created in Visual Studio in C# language and if we create a project in Unity3D that uses code in C#.
+Then to access each of the functions of the dynamic link library, c# need to know how to access to this function, for this reason we declare the function structure: we will use the functions of Open a memory, read integer, read floating and the last function is free views. 
 
-1. In the example interface we must specify the Name of the shared memories to Open, then click Open in each memory.
-
-Explanation: Load de Dynamic Link Library. If we are in a 64-bit C# application we load "smClient64.dll", the library must be in the same place where we hace the .exe output or in the System32 folder.
-
-The [DllImport (dllPath)] statement must be for each function call statement of the library. For example for open a Shared Memory, we use the function in the library, but c# need to know how to access to this function, for this reason we declare the function structure:
 ```csharp
-const string dllPath = "smClient64.dll"; //Dll Path
+using System;
+using System.Runtime.InteropServices;
+namespace test
+{
+    class Program
+    {
+        const string dllPath = "C:\\Users\\Eros\\Desktop\\smClient64.dll"; //Dll Path
 
-[DllImport(dllPath)]
-static extern int openMemory(String name, int type);
+        [DllImport(dllPath)]
+        static extern int openMemory(String name, int type);
+
+        [DllImport(dllPath)]
+        static extern int getInt(String memName, int position);
+
+        [DllImport(dllPath)]
+        static extern float getFloat(String memName, int position);
+
+        [DllImport(dllPath)]
+        static extern void freeViews();
+
+        static void Main(string[] args)
+        {
+        }
+    }
+}
 ```
-If we want, we can check how C# open a Shared Memory, checking the code from the Open Button. In the parameters 1 means Integer Memory.
+
+2. Then we need to open the memory or the shared memories we want to work with.
+Open an Integer memory (1 means Integer type Memory) and the float memory (2 means Floating type memory), If the shared memory is opened correctly, the value zero (0) is returned. We add this code to the **static void Main(string[] args)** function. 
 
 ```csharp
 int retOpen = openMemory("Memory0", 1);
-``` 
-Open a Float memory (2 means Float Memory)
-```csharp
-int retOpen = openMemory("Memory1", 2);
+Console.WriteLine(retOpen);
+retOpen = openMemory("Memory1", 2);
+Console.WriteLine(retOpen);
 ```
-2. Now we can Write/Read in the shared memories. C# can use the functions to get the Integer and Float values because we have declare how to work with the dll.
-```csharp
-[DllImport(dllPath)]
-static extern int getInt(String memName, int position);
+**NOTE:** If we get an error of type System.BadImageFormatException when we tray to run the example, it is because the architecture of our library does not correspond to the architecture that the IDE wants to compile. [Check the documentation on our wiki to fix it](https://github.com/EliGor1989/sharedMemoryClient/wiki/Trouble-help#2-error-systembadimageformatexception).
 
-[DllImport(dllPath)]
-static extern float getFloat(String memName, int position);
-```
-If we want to write, just set the position where we want to save a value and then in Value set the value, then clic in Write. To read a value you just have to write the position from which memory we want to read and clic en Read.
+3. Now we can Write/Read in the shared memories. 
 
 The codes used for get the values which were saved from Matlab are these.
 
 Read in the Integer memory "Memory0" in position 2.
 ```csharp
-int value = getInt("Memory0", 2);
+int intValue = getInt("Memory0", 2);
+Console.WriteLine(intValue);
 ``` 
 Read in the Float memory "Memory1" in position 1.
 ```csharp
-float Value = getFloat("Memory1", 1);
+float floatValue = getFloat("Memory1", 1);
+Console.WriteLine(floatValue);
 ```
-
+**Now just run our example and visualize the data that Matlab shared with us.**
+If the window closes without giving us the opportunity to view the data, we should only put a little pause at the end of our example.
+```csharp
+Console.ReadLine();
+```
 #### Result
 Following the steps correctly, Matlab stores numbers in an Integer type memory and also floating numbers in a floating type memory. In the same way, these values are read in Unity3D/C#. 
 
