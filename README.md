@@ -141,11 +141,11 @@ retOpen = openMemory("Memory1", 2);
 Console.WriteLine(retOpen);
 ```
 
-**NOTE:** If we get an error of type **System.BadImageFormatException** when we tray to run the example, it is because the architecture of our library does not correspond to the architecture that the IDE wants to compile. [Check the documentation on our wiki to fix it](https://github.com/EliGor1989/sharedMemoryClient/wiki/Trouble-help#2-error-systembadimageformatexception).
+**NOTE:** If we get an error of type **System.BadImageFormatException** when we try to run the example, the reason is possibly because the architecture of our library does not correspond to that the IDE wants to compile.[Check the documentation on our wiki to fix it](https://github.com/EliGor1989/sharedMemoryClient/wiki/Trouble-help#2-error-systembadimageformatexception).
 
 3. Now we can Write/Read in the shared memories. 
 
-The codes used for get the values which were saved from Matlab are these.
+The codes used for getting the values which were saved from Matlab are these.
 
 Read in the Integer memory "Memory0" in position 2.
 ```csharp
@@ -157,7 +157,7 @@ Read in the Float memory "Memory1" in position 1.
 float floatValue = getFloat("Memory1", 1);
 Console.WriteLine(floatValue);
 ```
-**Now just run our example and visualize the data that Matlab shared with us.**
+**Now, just run our example and visualize the data that Matlab shared with us.**
 If the window closes without giving us the opportunity to view the data, we should only put a little pause at the end of our example and then we can release the views that were created towards shared memories.
 
 ```csharp
