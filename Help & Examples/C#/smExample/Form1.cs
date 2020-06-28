@@ -7,11 +7,10 @@ namespace smExample
 {
     public partial class Form1 : Form
     {
-		/*
+        /*
          * Use this path if the dll is 32 bits and is located in the 'System32' folder on a 64-bit system,
          * const string dllPath = "C:\\Windows\\SysNative\\smClient.dll";
 		*/
-            
         const string dllPath = "smClient64.dll";
         /*
          * Import of the library according to your calling convention
@@ -72,7 +71,13 @@ namespace smExample
         // [DllImport(dllPath, EntryPoint = "getString@12", CallingConvention = CallingConvention.StdCall)] 
         // [DllImport(dllPath, EntryPoint = "@getString@12", CallingConvention = CallingConvention.FastCall)]
         [DllImport(dllPath)]
-        public static extern Boolean getString(String memName, int position, [MarshalAs(UnmanagedType.LPStr)] StringBuilder str);
+        static extern Boolean getString(String memName, int position, [MarshalAs(UnmanagedType.LPStr)] StringBuilder str);
+		
+		// [DllImport(dllPath, CallingConvention = CallingConvention.Cdecl)]
+        // [DllImport(dllPath, EntryPoint = "freeViews@0", CallingConvention = CallingConvention.StdCall)] 
+        // [DllImport(dllPath, EntryPoint = "@freeViews@0", CallingConvention = CallingConvention.FastCall)]
+        [DllImport(dllPath)]
+        static extern void freeViews();
 
         public Form1()
         {
@@ -240,7 +245,7 @@ namespace smExample
 
         private void btnReadString_Click(object sender, EventArgs e)
         {
-            var sb = new StringBuilder((int)13);
+            var sb = new StringBuilder((int)64);
 
             String nomMemoria = tbMemString.Text;      // Name of the Memory from which we will read
             int posicion = Convert.ToInt32(            // Memory position we want to read

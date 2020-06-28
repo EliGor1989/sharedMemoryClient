@@ -28,6 +28,8 @@
 #define CHARACTER_LIMIT 64 //specifies the character limit to be stored 
 				//in the character string type memories
 
+#define MEM_NAME_LIMIT 64 //specifies the character limit to memories' name
+
 
 //This structure contains each created named shared memory
 struct memoryNode{
@@ -48,7 +50,7 @@ struct mappingNode{
 // address space of a calling process.
 struct viewNode{
     void *pViewHandle;  //is the starting address of the mapped view
-    char viewName[13];  //The name of the Named Shared Memory
+    char viewName[MEM_NAME_LIMIT];  //The name of the Named Shared Memory
     struct viewNode *pNextView;
 };
 

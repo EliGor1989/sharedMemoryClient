@@ -16,3 +16,13 @@ C:\Users\Eros\gitProjects\sharedmemory\Help & Examples\Visual Basic\smClientExam
 C:\Users\Eros\gitProjects\sharedmemory\Help & Examples\Visual Basic\smClientExample\obj\x86\Debug\smClientExample.pdb
 C:\Users\Eros\gitProjects\sharedmemory\Help & Examples\Visual Basic\smClientExample\obj\x86\Debug\smClientExample.vbprojAssemblyReference.cache
 C:\Users\Eros\gitProjects\sharedmemory\Help & Examples\Visual Basic\smClientExample\obj\x86\Debug\smClientExample.vbproj.CoreCompileInputs.cache
+C:\Users\Eros\gitHub\sharedMemoryClient\Help & Examples\Visual Basic\smClientExample\bin\x86\Debug\smClientExample.exe
+C:\Users\Eros\gitHub\sharedMemoryClient\Help & Examples\Visual Basic\smClientExample\bin\x86\Debug\smClientExample.pdb
+C:\Users\Eros\gitHub\sharedMemoryClient\Help & Examples\Visual Basic\smClientExample\bin\x86\Debug\smClientExample.xml
+C:\Users\Eros\gitHub\sharedMemoryClient\Help & Examples\Visual Basic\smClientExample\obj\x86\Debug\smClientExample.vbprojAssemblyReference.cache
+C:\Users\Eros\gitHub\sharedMemoryClient\Help & Examples\Visual Basic\smClientExample\obj\x86\Debug\smClientExample.Resources.resources
+C:\Users\Eros\gitHub\sharedMemoryClient\Help & Examples\Visual Basic\smClientExample\obj\x86\Debug\smClientExample.vbproj.GenerateResource.cache
+C:\Users\Eros\gitHub\sharedMemoryClient\Help & Examples\Visual Basic\smClientExample\obj\x86\Debug\smClientExample.vbproj.CoreCompileInputs.cache
+C:\Users\Eros\gitHub\sharedMemoryClient\Help & Examples\Visual Basic\smClientExample\obj\x86\Debug\smClientExample.exe
+C:\Users\Eros\gitHub\sharedMemoryClient\Help & Examples\Visual Basic\smClientExample\obj\x86\Debug\smClientExample.xml
+C:\Users\Eros\gitHub\sharedMemoryClient\Help & Examples\Visual Basic\smClientExample\obj\x86\Debug\smClientExample.pdb

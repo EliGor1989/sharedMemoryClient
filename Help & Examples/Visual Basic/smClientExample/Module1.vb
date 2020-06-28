@@ -2,7 +2,8 @@
 
 ' In order to use calling convention cdecl libraries we must import this class
 
-' Imports System.Runtime.InteropServices
+Imports System.Runtime.InteropServices
+Imports System.Text
 
 Module Module1
 
@@ -10,6 +11,7 @@ Module Module1
     ' If we want to use a Cdecl type library in a 32Bits application
 
     'Private Const pathDll As String = "C:\Windows\SysNative\smClient.dll"
+    ' Private Const pathDll As String = "smClient64.dll"
 
     '<DllImport(pathDll, CallingConvention:=CallingConvention.Cdecl)>
     'Public Function openMemory(ByVal memName As String, ByVal typeCode As Integer) As Integer
@@ -21,7 +23,7 @@ Module Module1
 
     '<DllImport(pathDll, CallingConvention:=CallingConvention.Cdecl)>
     'Public Function getInt(ByVal memName As String, ByVal position As Integer) As Integer
-    'End Function  
+    'End Function
 
     '<DllImport(pathDll, CallingConvention:=CallingConvention.Cdecl)>
     'Public Sub setFloat(ByVal memName As String, ByVal position As Integer, ByVal value As Single)
@@ -44,7 +46,7 @@ Module Module1
     'End Sub
 
     '<DllImport(pathDll, CallingConvention:=CallingConvention.Cdecl)>
-    'Public Sub getString(ByVal namMemory As String, ByVal posicion As Integer, ByVal value As String)
+    'Public Sub getString(ByVal namMemory As String, ByVal posicion As Integer, ByVal value As StringBuilder)
     'End Sub
 
 
@@ -52,35 +54,36 @@ Module Module1
 
     'Call library stdcall in 32bits System you have to put Alias "openMemory@8" after the library path
     ' Example:
-    ' Public Declare Function openMemory Lib "C:\Windows\SysNative\smClient.dll" Alias "openMemory@8" _
-    ' (ByVal nombre As String, ByVal cantidad As Integer) As Integer
+    'Public Declare Function openMemory Lib "C:\Windows\SysNative\smClient.dll" Alias "openMemory@8" _
+    '(ByVal nombre As String, ByVal cantidad As Integer) As Integer
 
-    'Use of the library in 32Bits application
-    Public Declare Function openMemory Lib "C:\Windows\SysNative\smClientStd.dll" Alias "openMemory@8" _
+
+    ' Use of the library in 32Bits application
+    Public Declare Function openMemory Lib "C:\Windows\SysNative\smClient.dll" Alias "openMemory@8" _
     (ByVal memName As String, ByVal cantidad As Integer) As Integer
 
-    Public Declare Function getInt Lib "C:\Windows\SysNative\smClientStd.dll" Alias "getInt@8" _
+    Public Declare Function getInt Lib "C:\Windows\SysNative\smClient.dll" Alias "getInt@8" _
     (ByVal memName As String, ByVal position As Integer) As Integer
 
-    Public Declare Sub setInt Lib "C:\Windows\SysNative\smClientStd.dll" Alias "setInt@12" _
+    Public Declare Sub setInt Lib "C:\Windows\SysNative\smClient.dll" Alias "setInt@12" _
     (ByVal memName As String, ByVal position As Integer, ByVal value As Integer)
 
-    Public Declare Function getFloat Lib "C:\Windows\SysNative\smClientStd.dll" Alias "getFloat@8" _
+    Public Declare Function getFloat Lib "C:\Windows\SysNative\smClient.dll" Alias "getFloat@8" _
     (ByVal namMemory As String, ByVal posicion As Integer) As Single
 
-    Public Declare Sub setFloat Lib "C:\Windows\SysNative\smClientStd.dll" Alias "setFloat@12" _
+    Public Declare Sub setFloat Lib "C:\Windows\SysNative\smClient.dll" Alias "setFloat@12" _
     (ByVal namMemory As String, ByVal position As Integer, ByVal value As Single)
 
-    Public Declare Function getDouble Lib "C:\Windows\SysNative\smClientStd.dll" Alias "getDouble@8" _
+    Public Declare Function getDouble Lib "C:\Windows\SysNative\smClient.dll" Alias "getDouble@8" _
     (ByVal namMemory As String, ByVal posicion As Integer) As Double
 
-    Public Declare Sub setDouble Lib "C:\Windows\SysNative\smClientStd.dll" Alias "setDouble@16" _
+    Public Declare Sub setDouble Lib "C:\Windows\SysNative\smClient.dll" Alias "setDouble@16" _
     (ByVal namMemory As String, ByVal position As Integer, ByVal value As Double)
 
-    Public Declare Sub getString Lib "C:\Windows\SysNative\smClientStd.dll" Alias "getString@12" _
-    (ByVal namMemory As String, ByVal position As Integer, ByVal value As String)
+    Public Declare Sub getString Lib "C:\Windows\SysNative\smClient.dll" Alias "getString@12" _
+    (ByVal namMemory As String, ByVal position As Integer, ByVal value As StringBuilder)
 
-    Public Declare Sub setString Lib "C:\Windows\SysNative\smClientStd.dll" Alias "setString@12" _
+    Public Declare Sub setString Lib "C:\Windows\SysNative\smClient.dll" Alias "setString@12" _
     (ByVal namMemory As String, ByVal position As Integer, ByVal value As String)
 
 
@@ -119,15 +122,15 @@ Module Module1
         System.Threading.Thread.Sleep(1000)
 
         ' Work with String shared memory
-        Dim retString As New String(" ", 13)
+        Dim retString As StringBuilder = New StringBuilder(64)
 
         retOpen = openMemory("Memory3", 4)
-        setString("Memory3", 3, "Hello VB")
+        setString("Memory3", 3, "Hellss 32 VB")
 
         getString("Memory3", 3, retString)
 
-        Console.WriteLine("probando " & retString)
-        System.Threading.Thread.Sleep(1000)
+        Console.WriteLine("probando " & retString.ToString)
+        System.Threading.Thread.Sleep(3000)
     End Sub
 
 End Module

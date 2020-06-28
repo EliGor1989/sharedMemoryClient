@@ -187,7 +187,7 @@ void __fastcall TForm1::CreateClick(TObject *Sender)
                 }
         }
         if(banError == 0){
-                Application->MessageBox("Memories created suceffully!.",
+                Application->MessageBox("Memories created successfully!.",
 				"Shared Memory", MB_OK | MB_ICONINFORMATION);
                 Label2->Caption = "Created";
                 Label2->Color = clLime;
