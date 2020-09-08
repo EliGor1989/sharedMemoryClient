@@ -23,7 +23,7 @@
 */
 
 
-	// We create a new structure that will point to the following functions:
+typedef int(*FN1PTR)(char *, int); // We create a new structure that will point to the following functions:
 								   // int openMemory(char *memoryName, int typeCode);
 								   // int getInt(char *memoryName, int valuePosition);
 
