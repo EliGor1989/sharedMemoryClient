@@ -5,3 +5,5 @@ C:\Users\eligo\Documents\gitHub\sharedMemoryClient\Help & Examples\C#\smExample\
 C:\Users\eligo\Documents\gitHub\sharedMemoryClient\Help & Examples\C#\smExample\obj\x64\Debug\smExampleX64.csproj.GenerateResource.Cache
 C:\Users\eligo\Documents\gitHub\sharedMemoryClient\Help & Examples\C#\smExample\obj\x64\Debug\smExample.exe
 C:\Users\eligo\Documents\gitHub\sharedMemoryClient\Help & Examples\C#\smExample\obj\x64\Debug\smExample.pdb
+C:\Users\eligo\Documents\gitHub\sharedMemoryClient\Help & Examples\C#\smExample\obj\x64\Debug\smExampleX64.csprojAssemblyReference.cache
+C:\Users\eligo\Documents\gitHub\sharedMemoryClient\Help & Examples\C#\smExample\obj\x64\Debug\smExampleX64.csproj.CoreCompileInputs.cache
