@@ -1,4 +1,4 @@
-﻿namespace SmExampleCdecl
+﻿namespace SmExampleStdCall
 {
     partial class Form1
     {
@@ -123,12 +123,12 @@
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Location = new System.Drawing.Point(2, 2);
+            this.tabControl1.Location = new System.Drawing.Point(12, 11);
             this.tabControl1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(455, 532);
-            this.tabControl1.TabIndex = 1;
+            this.tabControl1.TabIndex = 2;
             // 
             // tabPage1
             // 
@@ -718,11 +718,11 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(44, 3);
+            this.label1.Location = new System.Drawing.Point(22, 3);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(363, 20);
+            this.label1.Size = new System.Drawing.Size(376, 20);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Access to shared memories (X86 - Cdecl)";
+            this.label1.Text = "Access to shared memories (X86 - StdCall)";
             // 
             // tabPage2
             // 
@@ -1004,7 +1004,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(460, 535);
+            this.ClientSize = new System.Drawing.Size(474, 558);
             this.Controls.Add(this.tabControl1);
             this.Name = "Form1";
             this.Text = "Shared Memory Example";

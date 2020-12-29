@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace SmExampleCdecl
+namespace SmExampleStdCall
 {
     public partial class Form1 : Form
     {
@@ -21,7 +21,7 @@ namespace SmExampleCdecl
         {
             String namIntMem = tbMemInt.Text;     // Name of shared memory to open
 
-            if (SmClientCdecl.openMemory(namIntMem, (int)SmClientCdecl.memoryType.Integer) == 0)
+            if (SmClientStdCall.openMemory(namIntMem, (int)SmClientStdCall.memoryType.Integer) == 0)
             {
                 MessageBox.Show("Shared Memory opened correctly",
                     "SM type: Integers",
@@ -42,7 +42,7 @@ namespace SmExampleCdecl
             int value = Convert.ToInt32(tbValueInt.Text);  // The value we want to store
             String namIntMem = tbMemInt.Text;             // Name of the Memory in which we will store
             int position = Convert.ToInt32(tbPosInt.Text); // Position to be written in
-            SmClientCdecl.setInt(namIntMem, position, value);           // Function use
+            SmClientStdCall.setInt(namIntMem, position, value);           // Function use
         }
 
         private void btnReadInt_Click(object sender, EventArgs e)
@@ -52,14 +52,14 @@ namespace SmExampleCdecl
                                             tbPosResInt.Text // Memory position we want to read
                                           );
             tbResInt.Text = Convert.ToString(                // Function use
-                                            SmClientCdecl.getInt(namIntMem, position)
+                                            SmClientStdCall.getInt(namIntMem, position)
                                             ); 
         }
 
         private void btnOpenFloat_Click(object sender, EventArgs e)
         {
             String namFloatMem = tbMemFloat.Text;      // Name of shared memory to open
-            if (SmClientCdecl.openMemory(namFloatMem, (int)SmClientCdecl.memoryType.Float) == 0)
+            if (SmClientStdCall.openMemory(namFloatMem, (int)SmClientStdCall.memoryType.Float) == 0)
             {
                 MessageBox.Show("Shared Memory opened correctly",
                     "SM type: float",
@@ -84,7 +84,7 @@ namespace SmExampleCdecl
             int position = Convert.ToInt32(
                                           tbPosFloat.Text  // Position to be written in
                                           );
-            SmClientCdecl.setFloat(namFloatMem, position, value);        // Function use
+            SmClientStdCall.setFloat(namFloatMem, position, value);        // Function use
         }
 
         private void btnReadFloat_Click(object sender, EventArgs e)
@@ -94,14 +94,14 @@ namespace SmExampleCdecl
                                         tbPosRestFloat.Text
                                           );
             tbResFloat.Text = Convert.ToString(            // Function use
-                                            SmClientCdecl.getFloat(namFloatMem, position)
+                                            SmClientStdCall.getFloat(namFloatMem, position)
                                               ); 
         }
 
         private void btnOpenDouble_Click(object sender, EventArgs e)
         {
             String namDoubleMem = tbMemDouble.Text;       // Name of shared memory to open
-            if (SmClientCdecl.openMemory(namDoubleMem, (int)SmClientCdecl.memoryType.Double) == 0)
+            if (SmClientStdCall.openMemory(namDoubleMem, (int)SmClientStdCall.memoryType.Double) == 0)
             {
                 MessageBox.Show("Shared Memory opened correctly",
                     "SM type: Double",
@@ -120,13 +120,13 @@ namespace SmExampleCdecl
         private void btnWriteDouble_Click(object sender, EventArgs e)
         {
             double value = Convert.ToDouble(              // The value we want to store
-                                           tbValueDouble.Text
-                                           );
+                                          tbValueDouble.Text
+                                          );
             String namDoubleMem = tbMemDouble.Text;      // Name of the Memory in which we will store
             int position = Convert.ToInt32(              // Position to be written
                                           tbPosDouble.Text
                                           );
-            SmClientCdecl.setDouble(namDoubleMem, position, value);    // Funtion use
+            SmClientStdCall.setDouble(namDoubleMem, position, value);    // Funtion use
         }
 
         private void btnReadDouble_Click(object sender, EventArgs e)
@@ -136,14 +136,14 @@ namespace SmExampleCdecl
                                           tbPosResDouble.Text
                                           );
             tbResDouble.Text = Convert.ToString(          // Function use
-                                               SmClientCdecl.getDouble(namDoubleMem, position)
+                                               SmClientStdCall.getDouble(namDoubleMem, position)
                                                ); 
         }
 
         private void btnOpenString_Click(object sender, EventArgs e)
         {
             String namStrMem = tbMemString.Text;   // Name of shared memory to open
-            if (SmClientCdecl.openMemory(namStrMem, (int)SmClientCdecl.memoryType.String) == 0)
+            if (SmClientStdCall.openMemory(namStrMem, (int)SmClientStdCall.memoryType.String) == 0)
             {
                 MessageBox.Show("Shared Memory opened correctly",
                     "SM type: String",
@@ -166,7 +166,7 @@ namespace SmExampleCdecl
             int position = Convert.ToInt32(             // Position to be written in
                                           tbPosString.Text
                                           );
-            SmClientCdecl.setString(namStrMem, position, value); // Function use
+            SmClientStdCall.setString(namStrMem, position, value); // Function use
         }
 
         private void btnReadString_Click(object sender, EventArgs e)
@@ -177,16 +177,16 @@ namespace SmExampleCdecl
             int posicion = Convert.ToInt32(            // Memory position we want to read
                                           tbPosResString.Text
                                           );
-            SmClientCdecl.getString(nomMemoria, posicion, sb);       // Function use
+            SmClientStdCall.getString(nomMemoria, posicion, sb);       // Function use
             string palabra = sb.ToString();
             tbResString.Text = palabra;
         }
 
         private void btnCreateInt_Click(object sender, EventArgs e)
         {
-            String namIntMem = tbMemIntCreate.Text;
+             String namIntMem = tbMemIntCreate.Text;
             int intQuantity = Convert.ToInt32(tbIntQuantity.Text);
-            int ret = SmClientCdecl.createMemory(namIntMem, intQuantity, (int)SmClientCdecl.memoryType.Integer);
+            int ret = SmClientStdCall.createMemory(namIntMem, intQuantity, (int)SmClientStdCall.memoryType.Integer);
 
             if (ret == 0)
             {
@@ -208,7 +208,7 @@ namespace SmExampleCdecl
         {
             String namFloatMem = tbMemFloatCreate.Text;
             int floatQuantity = Convert.ToInt32(tbFloatQuantity.Text);
-            int ret = SmClientCdecl.createMemory(namFloatMem, floatQuantity, (int)SmClientCdecl.memoryType.Float);
+            int ret = SmClientStdCall.createMemory(namFloatMem, floatQuantity, (int)SmClientStdCall.memoryType.Float);
             if (ret == 0)
             {
                 MessageBox.Show("Shared Memory was created correctly",
@@ -229,7 +229,7 @@ namespace SmExampleCdecl
         {
              String namDoubleMem = tbMemDoubleCreate.Text;
             int doubleQuantity = Convert.ToInt32(tbDoubleQuantity.Text);
-            int ret = SmClientCdecl.createMemory(namDoubleMem, doubleQuantity, (int)SmClientCdecl.memoryType.Double);
+            int ret = SmClientStdCall.createMemory(namDoubleMem, doubleQuantity, (int)SmClientStdCall.memoryType.Double);
             if (ret == 0)
             {
                 MessageBox.Show("Shared Memory was created correctly",
@@ -248,9 +248,9 @@ namespace SmExampleCdecl
 
         private void btnCreateString_Click(object sender, EventArgs e)
         {
-             String namStringMem = tbMemStringCreate.Text;
+            String namStringMem = tbMemStringCreate.Text;
             int stringQuantity = Convert.ToInt32(tbStringQuantity.Text);
-            int ret = SmClientCdecl.createMemory(namStringMem, stringQuantity, (int)SmClientCdecl.memoryType.String);
+            int ret = SmClientStdCall.createMemory(namStringMem, stringQuantity, (int)SmClientStdCall.memoryType.String);
             if (ret == 0)
             {
                 MessageBox.Show("Shared Memory was created correctly",
@@ -269,21 +269,20 @@ namespace SmExampleCdecl
 
         private void button5_Click(object sender, EventArgs e)
         {
-            SmClientCdecl.freeMemories();
-            MessageBox.Show("The memories have been released.",
-                   "SMClient",
+            SmClientStdCall.freeViews();
+            MessageBox.Show("All views created are released",
+                   "Views Releasing",
                    MessageBoxButtons.OK,
                    MessageBoxIcon.Information);
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
-            SmClientCdecl.freeViews();
+            SmClientStdCall.freeViews();
             MessageBox.Show("All views created are released",
                    "Views Releasing",
                    MessageBoxButtons.OK,
                    MessageBoxIcon.Information);
         }
-        
     }
 }

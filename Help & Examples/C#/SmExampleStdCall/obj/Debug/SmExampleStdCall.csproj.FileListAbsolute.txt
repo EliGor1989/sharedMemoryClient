@@ -1,0 +1,9 @@
+C:\Users\eligo\Documents\gitHub\sharedMemoryClient\Help & Examples\C#\SmExampleStdCall\bin\Debug\SmExampleStdCall.exe.config
+C:\Users\eligo\Documents\gitHub\sharedMemoryClient\Help & Examples\C#\SmExampleStdCall\bin\Debug\SmExampleStdCall.exe
+C:\Users\eligo\Documents\gitHub\sharedMemoryClient\Help & Examples\C#\SmExampleStdCall\bin\Debug\SmExampleStdCall.pdb
+C:\Users\eligo\Documents\gitHub\sharedMemoryClient\Help & Examples\C#\SmExampleStdCall\obj\Debug\SmExampleStdCall.csprojResolveAssemblyReference.cache
+C:\Users\eligo\Documents\gitHub\sharedMemoryClient\Help & Examples\C#\SmExampleStdCall\obj\Debug\SmExampleStdCall.Form1.resources
+C:\Users\eligo\Documents\gitHub\sharedMemoryClient\Help & Examples\C#\SmExampleStdCall\obj\Debug\SmExampleStdCall.Properties.Resources.resources
+C:\Users\eligo\Documents\gitHub\sharedMemoryClient\Help & Examples\C#\SmExampleStdCall\obj\Debug\SmExampleStdCall.csproj.GenerateResource.Cache
+C:\Users\eligo\Documents\gitHub\sharedMemoryClient\Help & Examples\C#\SmExampleStdCall\obj\Debug\SmExampleStdCall.exe
+C:\Users\eligo\Documents\gitHub\sharedMemoryClient\Help & Examples\C#\SmExampleStdCall\obj\Debug\SmExampleStdCall.pdb

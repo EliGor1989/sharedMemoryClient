@@ -88,6 +88,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.button5 = new System.Windows.Forms.Button();
             this.tbStringQuantity = new System.Windows.Forms.TextBox();
             this.label36 = new System.Windows.Forms.Label();
             this.btnCreateString = new System.Windows.Forms.Button();
@@ -113,7 +114,6 @@
             this.label30 = new System.Windows.Forms.Label();
             this.label34 = new System.Windows.Forms.Label();
             this.label26 = new System.Windows.Forms.Label();
-            this.button5 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -718,11 +718,12 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(101, 3);
+            this.label1.Location = new System.Drawing.Point(84, 3);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(244, 20);
+            this.label1.Size = new System.Drawing.Size(296, 20);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Access to shared memories";
+            this.label1.Text = "Access to shared memories (X64)";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // tabPage2
             // 
@@ -758,6 +759,17 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Creation";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(52, 453);
+            this.button5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(329, 34);
+            this.button5.TabIndex = 48;
+            this.button5.Text = "Release memories";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // tbStringQuantity
             // 
@@ -810,9 +822,9 @@
             this.label38.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label38.Location = new System.Drawing.Point(11, 368);
             this.label38.Name = "label38";
-            this.label38.Size = new System.Drawing.Size(120, 17);
+            this.label38.Size = new System.Drawing.Size(125, 17);
             this.label38.TabIndex = 42;
-            this.label38.Text = "Integer Memory";
+            this.label38.Text = "String Memories";
             // 
             // tbDoubleQuantity
             // 
@@ -865,9 +877,9 @@
             this.label35.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label35.Location = new System.Drawing.Point(11, 249);
             this.label35.Name = "label35";
-            this.label35.Size = new System.Drawing.Size(120, 17);
+            this.label35.Size = new System.Drawing.Size(133, 17);
             this.label35.TabIndex = 36;
-            this.label35.Text = "Integer Memory";
+            this.label35.Text = "Double Memories";
             // 
             // tbFloatQuantity
             // 
@@ -920,9 +932,9 @@
             this.label31.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label31.Location = new System.Drawing.Point(11, 141);
             this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(120, 17);
+            this.label31.Size = new System.Drawing.Size(118, 17);
             this.label31.TabIndex = 30;
-            this.label31.Text = "Integer Memory";
+            this.label31.Text = "Float Memories";
             // 
             // tbIntQuantity
             // 
@@ -975,9 +987,9 @@
             this.label34.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label34.Location = new System.Drawing.Point(12, 33);
             this.label34.Name = "label34";
-            this.label34.Size = new System.Drawing.Size(120, 17);
+            this.label34.Size = new System.Drawing.Size(133, 17);
             this.label34.TabIndex = 12;
-            this.label34.Text = "Integer Memory";
+            this.label34.Text = "Integer Memories";
             // 
             // label26
             // 
@@ -988,17 +1000,6 @@
             this.label26.Size = new System.Drawing.Size(133, 20);
             this.label26.TabIndex = 0;
             this.label26.Text = "Creation Panel";
-            // 
-            // button5
-            // 
-            this.button5.Location = new System.Drawing.Point(52, 453);
-            this.button5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(329, 34);
-            this.button5.TabIndex = 48;
-            this.button5.Text = "Release memories";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // Form1
             // 
