@@ -16,3 +16,11 @@ C:\Users\Eros\gitHub\sharedMemoryClient\Help & Examples\C#\smExample\obj\x86\Deb
 C:\Users\Eros\gitHub\sharedMemoryClient\Help & Examples\C#\smExample\obj\x86\Debug\smExample.csproj.CoreCompileInputs.cache
 C:\Users\Eros\gitHub\sharedMemoryClient\Help & Examples\C#\smExample\obj\x86\Debug\smExample.exe
 C:\Users\Eros\gitHub\sharedMemoryClient\Help & Examples\C#\smExample\obj\x86\Debug\smExample.pdb
+C:\Users\eligo\Documents\gitHub\sharedMemoryClient\Help & Examples\C#\smExample\obj\x86\Debug\smExample.exe
+C:\Users\eligo\Documents\gitHub\sharedMemoryClient\Help & Examples\C#\smExample\obj\x86\Debug\smExample.pdb
+C:\Users\eligo\Documents\gitHub\sharedMemoryClient\Help & Examples\C#\smExample\bin\x86\Debug\smExample.exe
+C:\Users\eligo\Documents\gitHub\sharedMemoryClient\Help & Examples\C#\smExample\bin\x86\Debug\smExample.pdb
+C:\Users\eligo\Documents\gitHub\sharedMemoryClient\Help & Examples\C#\smExample\obj\x86\Debug\smExample.csprojResolveAssemblyReference.cache
+C:\Users\eligo\Documents\gitHub\sharedMemoryClient\Help & Examples\C#\smExample\obj\x86\Debug\smExample.Form1.resources
+C:\Users\eligo\Documents\gitHub\sharedMemoryClient\Help & Examples\C#\smExample\obj\x86\Debug\smExample.Properties.Resources.resources
+C:\Users\eligo\Documents\gitHub\sharedMemoryClient\Help & Examples\C#\smExample\obj\x86\Debug\smExample.csproj.GenerateResource.Cache

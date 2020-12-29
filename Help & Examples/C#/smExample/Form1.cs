@@ -1,84 +1,12 @@
 ﻿using System;
 using System.Text;
 using System.Windows.Forms;
-using System.Runtime.InteropServices;
 
 namespace smExample
 {
     public partial class Form1 : Form
     {
-        /*
-         * Use this path if the dll is 32 bits and is located in the 'System32' folder on a 64-bit system,
-         * const string dllPath = "C:\\Windows\\SysNative\\smClient.dll";
-		*/
-        const string dllPath = "smClient64.dll";
-        /*
-         * Import of the library according to your calling convention
-         * You can find all the names of the functions corresponding to 
-         * the calling conventions Cdecl, StdCall and FastCall in the file 'conventions.pdf'
-        */
-
-        // [DllImport(dllPath, CallingConvention = CallingConvention.Cdecl)]
-        // [DllImport(dllPath, EntryPoint = "openMemory@8", CallingConvention = CallingConvention.StdCall)] 
-        // [DllImport(dllPath, EntryPoint = "@openMemory@8", CallingConvention = CallingConvention.FastCall)]
-        [DllImport(dllPath)] // For 64 Bits System
-        static extern int openMemory(String name, int type);
-
-        // [DllImport(dllPath, CallingConvention = CallingConvention.Cdecl)]
-        // [DllImport(dllPath, EntryPoint = "setInt@12", CallingConvention = CallingConvention.StdCall)] 
-        // [DllImport(dllPath, EntryPoint = "@setInt@12", CallingConvention = CallingConvention.FastCall)]
-        [DllImport(dllPath)] // For 64 Bits System
-        static extern void setInt(String memName, int position, int value);
-
-        // [DllImport(dllPath, CallingConvention = CallingConvention.Cdecl)]
-        // [DllImport(dllPath, EntryPoint = "getInt@8", CallingConvention = CallingConvention.StdCall)] 
-        // [DllImport(dllPath, EntryPoint = "@getInt@8", CallingConvention = CallingConvention.FastCall)]
-        [DllImport(dllPath)]
-        static extern int getInt(String memName, int position);
-
-        // [DllImport(dllPath, CallingConvention = CallingConvention.Cdecl)]
-        // [DllImport(dllPath, EntryPoint = "setFloat@12", CallingConvention = CallingConvention.StdCall)] 
-        // [DllImport(dllPath, EntryPoint = "@setFloat@12", CallingConvention = CallingConvention.FastCall)]
-        [DllImport(dllPath)]
-        static extern void setFloat(String memName, int position, float value);
-
-
-        // [DllImport(dllPath, CallingConvention = CallingConvention.Cdecl)]
-        // [DllImport(dllPath, EntryPoint = "getFloat@8", CallingConvention = CallingConvention.StdCall)] 
-        // [DllImport(dllPath, EntryPoint = "@getFloat@8", CallingConvention = CallingConvention.FastCall)]
-        [DllImport(dllPath)]
-        static extern float getFloat(String memName, int position);
-
-        // [DllImport(dllPath, CallingConvention = CallingConvention.Cdecl)]
-        // [DllImport(dllPath, EntryPoint = "getDouble@8", CallingConvention = CallingConvention.StdCall)] 
-        // [DllImport(dllPath, EntryPoint = "@getDouble@8", CallingConvention = CallingConvention.FastCall)]
-        [DllImport(dllPath)]
-        static extern double getDouble(String memName, int position);
-
-        // [DllImport(dllPath, CallingConvention = CallingConvention.Cdecl)]
-        // [DllImport(dllPath, EntryPoint = "setDouble@16", CallingConvention = CallingConvention.StdCall)] 
-        // [DllImport(dllPath, EntryPoint = "@setDouble@16", CallingConvention = CallingConvention.FastCall)]
-        [DllImport(dllPath)]
-        static extern void setDouble(String memName, int position, double value);
-
-        // [DllImport(dllPath, CallingConvention = CallingConvention.Cdecl)]
-        // [DllImport(dllPath, EntryPoint = "setString@12", CallingConvention = CallingConvention.StdCall)] 
-        // [DllImport(dllPath, EntryPoint = "@setString@12", CallingConvention = CallingConvention.FastCall)]
-        [DllImport(dllPath)]
-        static extern void setString(String memName, int position, String str);
-
-        // [DllImport(dllPath, CallingConvention = CallingConvention.Cdecl)]
-        // [DllImport(dllPath, EntryPoint = "getString@12", CallingConvention = CallingConvention.StdCall)] 
-        // [DllImport(dllPath, EntryPoint = "@getString@12", CallingConvention = CallingConvention.FastCall)]
-        [DllImport(dllPath)]
-        static extern Boolean getString(String memName, int position, [MarshalAs(UnmanagedType.LPStr)] StringBuilder str);
-		
-		// [DllImport(dllPath, CallingConvention = CallingConvention.Cdecl)]
-        // [DllImport(dllPath, EntryPoint = "freeViews@0", CallingConvention = CallingConvention.StdCall)] 
-        // [DllImport(dllPath, EntryPoint = "@freeViews@0", CallingConvention = CallingConvention.FastCall)]
-        [DllImport(dllPath)]
-        static extern void freeViews();
-
+        
         public Form1()
         {
             InitializeComponent();
@@ -91,8 +19,8 @@ namespace smExample
         private void btnOpenInt_Click(object sender, EventArgs e)
         {
             String namIntMem = tbMemInt.Text;     // Name of shared memory to open
-            int type = 1;                      // Memory Type: 1 means integer values
-            if (openMemory(namIntMem, type) == 0)
+
+            if (SmClient64.openMemory(namIntMem, (int)SmClient64.memoryType.Integer) == 0)
             {
                 MessageBox.Show("Shared Memory opened correctly",
                     "SM type: Integers",
@@ -111,8 +39,7 @@ namespace smExample
         private void btnOpenFloat_Click(object sender, EventArgs e)
         {
             String namFloatMem = tbMemFloat.Text;      // Name of shared memory to open
-            int tipo = 2;                         // Memory Type: 2 means float values
-            if (openMemory(namFloatMem, tipo) == 0)
+            if (SmClient64.openMemory(namFloatMem, (int)SmClient64.memoryType.Float) == 0)
             {
                 MessageBox.Show("Shared Memory opened correctly",
                     "SM type: float",
@@ -131,8 +58,7 @@ namespace smExample
         private void btnOpenDouble_Click(object sender, EventArgs e)
         {
             String namDoubleMem = tbMemDouble.Text;       // Name of shared memory to open
-            int tipo = 3;                           // Memory Type: 3 means double values
-            if (openMemory(namDoubleMem, tipo) == 0)
+            if (SmClient64.openMemory(namDoubleMem, (int)SmClient64.memoryType.Double) == 0)
             {
                 MessageBox.Show("Shared Memory opened correctly",
                     "SM type: Double",
@@ -151,8 +77,7 @@ namespace smExample
         private void btnOpenString_Click(object sender, EventArgs e)
         {
             String namStrMem = tbMemString.Text;   // Name of shared memory to open
-            int tipo = 4;                           // Memory Type: 4 means string values
-            if (openMemory(namStrMem, tipo) == 0)
+            if (SmClient64.openMemory(namStrMem, (int)SmClient64.memoryType.String) == 0)
             {
                 MessageBox.Show("Shared Memory opened correctly",
                     "SM type: String",
@@ -173,7 +98,7 @@ namespace smExample
             int value = Convert.ToInt32(tbValueInt.Text);  // The value we want to store
             String namIntMem = tbMemInt.Text;             // Name of the Memory in which we will store
             int position = Convert.ToInt32(tbPosInt.Text); // Position to be written in
-            setInt(namIntMem, position, value);           // Function use
+            SmClient64.setInt(namIntMem, position, value);           // Function use
         }
 
         private void btnReadInt_Click(object sender, EventArgs e)
@@ -183,7 +108,7 @@ namespace smExample
                                             tbPosResInt.Text // Memory position we want to read
                                           ); 
             tbResInt.Text = Convert.ToString(                // Function use
-                                            getInt(namIntMem, position)
+                                            SmClient64.getInt(namIntMem, position)
                                             ); 
         }
 
@@ -195,8 +120,8 @@ namespace smExample
             String namFloatMem = tbMemFloat.Text;          // Name of the Memory in which we will store
             int position = Convert.ToInt32(
                                           tbPosFloat.Text  // Position to be written in
-                                          ); 
-            setFloat(namFloatMem, position, value);        // Function use
+                                          );
+            SmClient64.setFloat(namFloatMem, position, value);        // Function use
         }
 
         private void btnReadFloat_Click(object sender, EventArgs e)
@@ -206,7 +131,7 @@ namespace smExample
                                         tbPosRestFloat.Text
                                           ); 
             tbResFloat.Text = Convert.ToString(            // Function use
-                                            getFloat(namFloatMem, position)
+                                            SmClient64.getFloat(namFloatMem, position)
                                               ); 
         }
 
@@ -218,8 +143,8 @@ namespace smExample
             String namDoubleMem = tbMemDouble.Text;      // Name of the Memory in which we will store
             int position = Convert.ToInt32(              // Position to be written
                                           tbPosDouble.Text
-                                          ); 
-            setDouble(namDoubleMem, position, value);    // Funtion use
+                                          );
+            SmClient64.setDouble(namDoubleMem, position, value);    // Funtion use
         }
 
         private void btnReadDouble_Click(object sender, EventArgs e)
@@ -229,7 +154,7 @@ namespace smExample
                                           tbPosResDouble.Text
                                           ); 
             tbResDouble.Text = Convert.ToString(          // Function use
-                                               getDouble(namDoubleMem, position)
+                                               SmClient64.getDouble(namDoubleMem, position)
                                                ); 
         }
 
@@ -239,8 +164,8 @@ namespace smExample
             String namStrMem = tbMemString.Text;        // Name of the Memory in which we will store
             int position = Convert.ToInt32(             // Position to be written in
                                           tbPosString.Text
-                                          ); 
-            setString(namStrMem, position, value);      // Function use
+                                          );
+            SmClient64.setString(namStrMem, position, value); // Function use
         }
 
         private void btnReadString_Click(object sender, EventArgs e)
@@ -251,9 +176,112 @@ namespace smExample
             int posicion = Convert.ToInt32(            // Memory position we want to read
                                           tbPosResString.Text
                                           );
-            getString(nomMemoria, posicion, sb);       // Function use
+            SmClient64.getString(nomMemoria, posicion, sb);       // Function use
             string palabra = sb.ToString();
             tbResString.Text = palabra;
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            SmClient64.freeViews();
+            MessageBox.Show("All views created are released",
+                   "Views Releasing",
+                   MessageBoxButtons.OK,
+                   MessageBoxIcon.Information);
+        }
+
+        private void btnCreateInt_Click(object sender, EventArgs e)
+        {
+            String namIntMem = tbMemIntCreate.Text;
+            int intQuantity = Convert.ToInt32(tbIntQuantity.Text);
+            int ret = SmClient64.createMemory(namIntMem, intQuantity, (int)SmClient64.memoryType.Integer);
+
+            if (ret == 0)
+            {
+                MessageBox.Show("Shared Memory was created correctly",
+                    "SM type: Integers",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show("Error creating Shared Memory",
+                    "SM type: Integers",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnCreateFloat_Click(object sender, EventArgs e)
+        {
+            String namFloatMem = tbMemFloatCreate.Text;
+            int floatQuantity = Convert.ToInt32(tbFloatQuantity.Text);
+            int ret = SmClient64.createMemory(namFloatMem, floatQuantity, (int)SmClient64.memoryType.Float);
+            if (ret == 0)
+            {
+                MessageBox.Show("Shared Memory was created correctly",
+                    "SM type: Float",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show("Error opening Shared Memory",
+                    "SM type: Float",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnCreateDouble_Click(object sender, EventArgs e)
+        {
+            String namDoubleMem = tbMemDoubleCreate.Text;
+            int doubleQuantity = Convert.ToInt32(tbDoubleQuantity.Text);
+            int ret = SmClient64.createMemory(namDoubleMem, doubleQuantity, (int)SmClient64.memoryType.Double);
+            if (ret == 0)
+            {
+                MessageBox.Show("Shared Memory was created correctly",
+                    "SM type: Double",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show("Error opening Shared Memory",
+                    "SM type: Double",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnCreateString_Click(object sender, EventArgs e)
+        {
+            String namStringMem = tbMemStringCreate.Text;
+            int stringQuantity = Convert.ToInt32(tbStringQuantity.Text);
+            int ret = SmClient64.createMemory(namStringMem, stringQuantity, (int)SmClient64.memoryType.String);
+            if (ret == 0)
+            {
+                MessageBox.Show("Shared Memory was created correctly",
+                    "SM type: String",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show("Error opening Shared Memory",
+                    "SM type: String",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            }
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            SmClient64.freeMemories();
+            MessageBox.Show("The memories have been released.",
+                   "SMClient",
+                   MessageBoxButtons.OK,
+                   MessageBoxIcon.Information);
         }
     }
 }

@@ -28,7 +28,7 @@ public class SmClient {
 	*/
 	
 	static {      
-	System.loadLibrary("smClientJava64");   
+	System.loadLibrary("smClientJava");   
 	} 
 		
     public static SmClient smClient = new SmClient();

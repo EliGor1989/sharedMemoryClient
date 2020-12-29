@@ -1,0 +1,9 @@
+C:\Users\eligo\Documents\gitHub\sharedMemoryClient\Help & Examples\C#\SmExampleCdecl\bin\Debug\SmExampleCdecl.exe.config
+C:\Users\eligo\Documents\gitHub\sharedMemoryClient\Help & Examples\C#\SmExampleCdecl\bin\Debug\SmExampleCdecl.exe
+C:\Users\eligo\Documents\gitHub\sharedMemoryClient\Help & Examples\C#\SmExampleCdecl\bin\Debug\SmExampleCdecl.pdb
+C:\Users\eligo\Documents\gitHub\sharedMemoryClient\Help & Examples\C#\SmExampleCdecl\obj\Debug\SmExampleCdecl.csprojResolveAssemblyReference.cache
+C:\Users\eligo\Documents\gitHub\sharedMemoryClient\Help & Examples\C#\SmExampleCdecl\obj\Debug\SmExampleCdecl.Form1.resources
+C:\Users\eligo\Documents\gitHub\sharedMemoryClient\Help & Examples\C#\SmExampleCdecl\obj\Debug\SmExampleCdecl.Properties.Resources.resources
+C:\Users\eligo\Documents\gitHub\sharedMemoryClient\Help & Examples\C#\SmExampleCdecl\obj\Debug\SmExampleCdecl.csproj.GenerateResource.Cache
+C:\Users\eligo\Documents\gitHub\sharedMemoryClient\Help & Examples\C#\SmExampleCdecl\obj\Debug\SmExampleCdecl.exe
+C:\Users\eligo\Documents\gitHub\sharedMemoryClient\Help & Examples\C#\SmExampleCdecl\obj\Debug\SmExampleCdecl.pdb
